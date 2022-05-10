@@ -9,5 +9,10 @@
   "dependencies": {
     "@gridsome/source-graphql": "^0.1.0",
     "gridsome": "^0.7.0"
+  },
+  "devDependencies": {
+    "gridsome-plugin-typescript": "^0.4.0",
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.6.4"
   }
 }

@@ -4,14 +4,11 @@ module.exports = function (api) {
       gcms {
         games {
           id
-          title
         }
       }  
     }`)
 
-    console.log(data)
-
-    /*data.gcms.games.forEach(({ node }) => {
+    data.gcms.games.forEach(node => {
       createPage({
         path: `/games/${node.id}`,
         component: './src/templates/Game.vue',
@@ -19,6 +16,6 @@ module.exports = function (api) {
           id: node.id
         }
       })
-    })*/
+    })
   })
 }

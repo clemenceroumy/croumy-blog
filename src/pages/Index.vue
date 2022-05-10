@@ -1,6 +1,12 @@
 <template>
   <Layout>
-
+    <g-link
+        v-for="game in $page.gcms.games"
+        :key="game.id"
+        class="nav__link"
+        :to="'games/' + game.id"
+    >{{ game.title }}</g-link
+    >
   </Layout>
 </template>
 
@@ -11,3 +17,14 @@ export default {
   }
 }
 </script>
+
+<page-query>
+{
+gcms {
+games {
+id
+title
+}
+}
+}
+</page-query>
