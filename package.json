@@ -7,7 +7,7 @@
     "explore": "gridsome explore"
   },
   "dependencies": {
-    "gridsome": "^0.7.0",
-    "gridsome-source-directus": "^0.1.2"
+    "@gridsome/source-graphql": "^0.1.0",
+    "gridsome": "^0.7.0"
   }
 }

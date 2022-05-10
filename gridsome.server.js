@@ -1,9 +1,24 @@
 module.exports = function (api) {
-  api.loadSource(({ addCollection }) => {
-    // Use the Data Store API here: https://gridsome.org/docs/data-store-api/
-  })
+  api.createPages(async ({ graphql, createPage }) => {
+    const { data } = await graphql(`{
+      gcms {
+        games {
+          id
+          title
+        }
+      }  
+    }`)
 
-  api.createPages(({ createPage }) => {
-    // Use the Pages API here: https://gridsome.org/docs/pages-api/
+    console.log(data)
+
+    /*data.gcms.games.forEach(({ node }) => {
+      createPage({
+        path: `/games/${node.id}`,
+        component: './src/templates/Game.vue',
+        context: {
+          id: node.id
+        }
+      })
+    })*/
   })
 }

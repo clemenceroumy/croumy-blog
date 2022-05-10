@@ -2,19 +2,15 @@ module.exports = {
   siteName: 'Croumy',
   plugins: [
     {
-      use: 'gridsome-source-directus',
+      use: '@gridsome/source-graphql',
       options: {
-        apiUrl: String(process.env.VUE_APP_GRIDSOME_API_URL),
-        project: String(process.env.VUE_APP_GRIDSOME_PROJECT_NAME),
-        email: String(process.env.VUE_APP_GRIDSOME_EMAIL),
-        password: String(process.env.VUE_APP_GRIDSOME_PASSWORD),
-        collections: [
-          {
-            name: 'games',
-            fields: '*.*',
-          }
-        ]
-      }
-    }
+        url: process.env.VUE_APP_GRAPHCMS_API,
+        fieldName: 'gcms',
+        typeName: 'gcmsTypes',
+        headers: {
+          Authorization: `Bearer ${process.env.VUE_APP_GRAPHCMS_AUTH_TOKEN}`,
+        },
+      },
+    },
   ]
 }
