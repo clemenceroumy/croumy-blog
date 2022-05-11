@@ -1,5 +1,6 @@
 <template>
   <Layout>
+    <h1>Jeux</h1>
     <g-link
         v-for="game in $page.gcms.games"
         :key="game.id"
@@ -20,11 +21,11 @@ export default {
 
 <page-query>
 {
-gcms {
-games {
-id
-title
-}
-}
+  gcms {
+    games {
+      id
+      title
+    }
+  }
 }
 </page-query>

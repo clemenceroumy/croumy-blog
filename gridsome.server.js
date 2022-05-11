@@ -3,17 +3,17 @@ module.exports = function (api) {
     const { data } = await graphql(`{
       gcms {
         games {
-          id
+          slug
         }
       }  
     }`)
 
     data.gcms.games.forEach(node => {
       createPage({
-        path: `/games/${node.id}`,
+        path: `/games/${node.slug}`,
         component: './src/templates/Game.vue',
         context: {
-          id: node.id
+          id: node.slug
         }
       })
     })
