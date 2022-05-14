@@ -13,7 +13,7 @@ module.exports = function (api) {
         path: `/games/${node.slug}`,
         component: './src/templates/Game.vue',
         context: {
-          id: node.slug
+          slug: node.slug
         }
       })
     })

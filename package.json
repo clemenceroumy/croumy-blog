@@ -8,10 +8,16 @@
   },
   "dependencies": {
     "@gridsome/source-graphql": "^0.1.0",
-    "gridsome": "^0.7.0"
+    "autoprefixer": "^9.8.8",
+    "gridsome": "^0.7.0",
+    "postcss": "^7.0.39",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
   },
   "devDependencies": {
+    "gridsome-plugin-tailwindcss": "^4.1.1",
     "gridsome-plugin-typescript": "^0.4.0",
+    "postcss-import": "^14.1.0",
+    "postcss-preset-env": "^7.5.0",
     "sass": "^1.51.0",
     "sass-loader": "^10",
     "ts-loader": "^9.3.0",

@@ -1,9 +1,8 @@
 module.exports = {
   siteName: 'Croumy',
   plugins: [
-    {
-      use: 'gridsome-plugin-typescript',
-    },
+    {use: 'gridsome-plugin-typescript',},
+    {use: "gridsome-plugin-tailwindcss",},
     {
       use: '@gridsome/source-graphql',
       options: {

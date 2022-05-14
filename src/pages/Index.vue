@@ -1,11 +1,11 @@
 <template>
   <Layout>
-    <h1>Jeux</h1>
+    <h1 class="header">Jeux</h1>
     <g-link
         v-for="game in $page.gcms.games"
-        :key="game.id"
+        :key="game.slug"
         class="nav__link"
-        :to="'games/' + game.id"
+        :to="'games/' + game.slug"
     >{{ game.title }}</g-link
     >
   </Layout>
@@ -23,7 +23,7 @@ export default {
 {
   gcms {
     games {
-      id
+      slug
       title
     }
   }
