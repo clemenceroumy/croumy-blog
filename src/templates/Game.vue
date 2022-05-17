@@ -1,30 +1,28 @@
 <template>
   <Layout>
-    <div>
-      <h1 class="header" v-html="$page.gcms.game.title" />
-      <p v-html="$page.gcms.game.content" />
-    </div>
+    <Article :article="$page.gcms.game"></Article>
   </Layout>
 </template>
 
 <script>
+import Article from "../components/Article.vue";
+
 export default {
-  watch: {
-    '$page.gcms'(val) {
-      console.log(val);
-    }
-  }
-}
+  components: {Article}
+};
 </script>
 
 <page-query>
 query GetGame($slug: String) {
-  gcms {
-    game(where: {slug: $slug}) {
-      slug
-      title
-      content
-    }
-  }
+gcms {
+game(where: {slug: $slug}) {
+slug
+title
+content
+picture {
+url
+}
+}
+}
 }
 </page-query>

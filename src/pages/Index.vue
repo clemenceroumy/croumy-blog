@@ -1,31 +1,40 @@
 <template>
   <Layout>
-    <h1 class="header">Jeux</h1>
+    <h1 class="header">JEUX</h1>
+
     <g-link
-        v-for="game in $page.gcms.games"
         :key="game.slug"
+        v-for="game in $page.gcms.games"
         class="nav__link"
         :to="'games/' + game.slug"
-    >{{ game.title }}</g-link
     >
+      <Article shorten :article="game"/>
+    </g-link>
   </Layout>
 </template>
 
 <script>
+import Article from "../components/Article.vue";
+
 export default {
   metaInfo: {
-    title: 'Croumy'
-  }
-}
+    title: "Croumy"
+  },
+  components: {Article}
+};
 </script>
 
 <page-query>
 {
-  gcms {
-    games {
-      slug
-      title
-    }
-  }
+gcms {
+games {
+slug
+title
+content
+picture {
+url
+}
+}
+}
 }
 </page-query>
