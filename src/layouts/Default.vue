@@ -1,6 +1,6 @@
 <template>
-  <div class="m-5 h-full">
-    <header>
+  <div class="h-full">
+    <header class="mx-10 pt-5">
       <g-link class="logo" to="/">{{ $static.metadata.siteName.toUpperCase() }}</g-link>
 
       <div class="flex justify-between">
@@ -18,9 +18,11 @@
       </div>
     </header>
 
-    <slot class="content"/>
+    <div class="mx-10">
+      <slot />
+    </div>
 
-    <footer class="flex w-full mb-5 justify-between items-center">
+    <footer class="flex w-full mb-5 justify-between items-center fixed bottom-0 px-10">
       <p>© <span style="font-weight: bold">Clémence Roumy</span> - 2022</p>
 
       <div class="flex items-center">
