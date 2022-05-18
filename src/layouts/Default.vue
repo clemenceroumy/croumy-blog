@@ -8,10 +8,10 @@
           <g-link
               class="nav__link"
               :to="'games/'"
-          ><h1>Jeux</h1></g-link>
-          <h1>Mangas</h1>
-          <h1>Musique JV</h1>
-          <h1>Collection</h1>
+          ><h1 class="font-bold">Jeux</h1></g-link>
+          <h1 class="font-bold">Mangas</h1>
+          <h1 class="font-bold">Musique JV</h1>
+          <h1 class="font-bold">Collection</h1>
         </div>
 
         <h1>A propos</h1>

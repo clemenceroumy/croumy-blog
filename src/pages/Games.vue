@@ -6,7 +6,7 @@
         class="nav__link"
         :to="'games/' + game.slug"
     >
-      <Article shorten :article="game"/>
+      <ArticleShort class="my-5" :article="game"/>
     </g-link>
   </Layout>
 </template>
@@ -18,6 +18,7 @@ games {
 slug
 title
 content
+publishedDate
 picture {
 url
 }
@@ -27,9 +28,9 @@ url
 </page-query>
 
 <script>
-import Article from "../components/Article.vue";
+import ArticleShort from "../components/article/ArticleShort.vue";
 
 export default {
-  components: {Article}
+  components: {ArticleShort}
 };
 </script>

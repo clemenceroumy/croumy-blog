@@ -37,7 +37,18 @@ a {
   font-weight: bold;
 }
 
+.headline {
+  font-family: 'Syne', sans-serif;
+  font-size: 64px;
+  font-weight: bold;
+}
+
 h1 {
   font-family: 'Syne', sans-serif;
   font-size: 24px;
+}
+
+.subtitle {
+  color: var(--dark-gray);
+  font-family: 'Libre Baskerville', sans-serif;
 }

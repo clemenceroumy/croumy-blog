@@ -8,19 +8,19 @@
         class="nav__link"
         :to="'games/' + game.slug"
     >
-      <Article shorten :article="game"/>
+      <ArticleShort class="my-5" :article="game"/>
     </g-link>
   </Layout>
 </template>
 
 <script>
-import Article from "../components/Article.vue";
+import ArticleShort from "../components/article/ArticleShort.vue";
 
 export default {
   metaInfo: {
     title: "Croumy"
   },
-  components: {Article}
+  components: {ArticleShort}
 };
 </script>
 
@@ -31,6 +31,7 @@ games {
 slug
 title
 content
+publishedDate
 picture {
 url
 }

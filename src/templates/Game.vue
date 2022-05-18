@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Article from "../components/Article.vue";
+import Article from "../components/article/Article.vue";
 
 export default {
   components: {Article}
@@ -19,6 +19,7 @@ game(where: {slug: $slug}) {
 slug
 title
 content
+publishedDate
 picture {
 url
 }
