@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <Article :article="$page.gcms.game"></Article>
+    <Article class="my-20" :article="$page.gcms.game"></Article>
   </Layout>
 </template>
 

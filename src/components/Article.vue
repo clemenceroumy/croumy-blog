@@ -1,17 +1,21 @@
 <template>
-  <div class="p-5 bg-background rounded-md">
-      <div class="wrapper pa-5" :class="shorten ? 'shorten' : ''">
+  <div class="bg-background rounded-lg">
+      <div class="wrapper" :class="shorten ? 'shorten' : ''">
         <div class="flex justify-between">
           <h1 class="header">{{ article.title }}</h1>
 
-          <img
-              class="image_container object-cover"
-              :class="shorten ? 'shorten' : ''"
-              :src="article.picture.url"
-              alt="game cover">
+          <div class="image_container mr-10 mt-12">
+            <div class="scotch_upper_right"></div>
+            <img
+                class="image object-cover"
+                :class="shorten ? 'shorten' : ''"
+                :src="article.picture.url"
+                alt="game cover">
+            <div class="scotch_bottom_left"></div>
+          </div>
         </div>
 
-        <p class="content" :class="shorten ? 'shorten' : ''" v-html="article.content"></p>
+        <p class="content mt-20" :class="shorten ? 'shorten' : ''" v-html="article.content"></p>
       </div>
   </div>
 </template>
@@ -35,22 +39,52 @@ export default {
 
 <style lang="scss">
 .wrapper {
-  height: 100vh;
+  padding: 50px;
 }
 
 .wrapper.shorten {
   height: 250px;
+  padding: 15px;
 }
 
-.image_container {
+.image_container{
   width: 350px;
   height: 240px;
-  border: 12px solid #FFFFFF;
+  position: relative;
+  transform: rotate(8deg);
 }
 
 .image_container.shorten {
   width: 200px;
   height: 150px;
+}
+
+.scotch_upper_right {
+  height: 25px;
+  width: 65px;
+  background-color: var(--gray);
+  opacity: 0.4;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 0;
+  right: -20px;
+}
+
+.scotch_bottom_left {
+  height: 25px;
+  width: 65px;
+  background-color: var(--gray);
+  opacity: 0.4;
+  transform: rotate(45deg);
+  position: absolute;
+  bottom: 0;
+  left: -20px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  border: 12px solid #FFFFFF;
 }
 
 .content {
