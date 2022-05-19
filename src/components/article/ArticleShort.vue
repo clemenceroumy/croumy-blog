@@ -3,7 +3,7 @@
     <div class="flex h-full items-center">
       <div class="flex flex-col justify-between pr-20">
         <h1 class="header">{{ article.title }}</h1>
-        <p class="subtitle">{{ article.publishedDate }}</p>
+        <p class="subtitle">{{ formattedDate }}</p>
 
         <p class="content mt-4" v-html="article.content"></p>
       </div>
@@ -17,8 +17,9 @@
 </template>
 
 <script>
-
 import ArticlePicture from "./ArticlePicture.vue";
+import {DateFormat} from "../../helpers/DateFormat.ts";
+
 export default {
   name: "ArticleShort",
   components: {ArticlePicture},
@@ -30,6 +31,11 @@ export default {
     alignLeft: {
       type: Boolean,
       default: false
+    }
+  },
+  computed: {
+    formattedDate() {
+      return DateFormat.toFrDate(this.article.publishedDate);
     }
   }
 };
