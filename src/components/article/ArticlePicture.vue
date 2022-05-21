@@ -9,26 +9,25 @@
   </div>
 </template>
 
-<script>
-export default {
-  props: {
-    height: {
-      type: Number
-    },
-    width: {
-      type: Number
-    },
-    url: {
-      type: String
-    }
-  },
-  computed: {
-    cssVars() {
-      return {
-        '--height': this.height + "px",
-        '--width': this.width + "px",
-      }
-    }
+<script lang="ts">
+import Vue from "vue";
+import {Prop} from "vue-property-decorator";
+
+export default class ArticlePicture extends Vue {
+  @Prop({required: true})
+  height!: number;
+
+  @Prop({required: true})
+  width!: number;
+
+  @Prop({required: true})
+  url: string | undefined;
+
+  get cssVars() {
+    return {
+      "--height": this.height + "px",
+      "--width": this.width + "px"
+    };
   }
 };
 </script>

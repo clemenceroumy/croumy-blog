@@ -1,7 +1,11 @@
 import * as dayjs from "dayjs";
+import * as fr from 'dayjs/locale/fr'
+import "./StringFormat";
+import StringFormat from "./StringFormat";
+dayjs.locale(fr)
 
-export class DateFormat {
+export default class DateFormat {
   static toFrDate(date: Date): string {
-    return dayjs(date).format("dddd dd MMMM yyyy");
+    return StringFormat.capitalizeFirstLetter(dayjs(date).format("dddd DD MMMM YYYY"));
   }
 }

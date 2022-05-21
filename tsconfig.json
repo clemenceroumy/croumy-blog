@@ -7,7 +7,7 @@
     "outDir": "./built/",
     "sourceMap": true,
     "strict": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
   },
   "include": [
     "./src/**/*"
