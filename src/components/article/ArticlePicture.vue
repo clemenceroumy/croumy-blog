@@ -11,25 +11,32 @@
 
 <script lang="ts">
 import Vue from "vue";
-import {Prop} from "vue-property-decorator";
 
-export default class ArticlePicture extends Vue {
-  @Prop({required: true})
-  height!: number;
-
-  @Prop({required: true})
-  width!: number;
-
-  @Prop({required: true})
-  url: string | undefined;
-
-  get cssVars() {
-    return {
-      "--height": this.height + "px",
-      "--width": this.width + "px"
-    };
+export default Vue.extend({
+  name: "ArticlePicture",
+  props: {
+    url: {
+      type: String,
+      required: true
+    },
+    height: {
+      type: Number,
+      default: 230
+    },
+    width: {
+      type: Number,
+      default: 350
+    }
+  },
+  computed: {
+    cssVars() {
+      return {
+        "--height": `${this.height}px`,
+        "--width": `${this.width}px`
+      };
+    }
   }
-};
+});
 </script>
 
 <style scoped>

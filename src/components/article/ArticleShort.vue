@@ -18,24 +18,28 @@
 
 <script lang="ts">
 import ArticlePicture from "./ArticlePicture.vue";
-import {Component, Prop} from "vue-property-decorator";
 import Vue from "vue";
 import DateFormat from "../../helpers/DateFormat";
 
-@Component({
-  components: {ArticlePicture}
-})
-export default class ArticleShort extends Vue {
-  @Prop({required: true})
-  article: any;
-
-  @Prop({default: false})
-  alignLeft!: boolean;
-
-  get formattedDate() {
-    return DateFormat.toFrDate(this.article.publishedDate);
+export default Vue.extend({
+  name: "ArticleShort",
+  components: {ArticlePicture},
+  props: {
+    article: {
+      type: Object,
+      required: true
+    },
+    alignLeft: {
+      type: Boolean,
+      default: false
+    }
+  },
+  computed: {
+    formattedDate() {
+      return DateFormat.toFrDate(this.article.publishedDate);
+    }
   }
-}
+});
 </script>
 
 <style scoped>

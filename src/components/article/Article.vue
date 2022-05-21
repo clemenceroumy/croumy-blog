@@ -15,19 +15,22 @@
 
 <script lang="ts">
 import Vue from "vue";
-import {Component, Prop, Watch} from "vue-property-decorator";
 import ArticlePicture from "./ArticlePicture.vue";
 import DateFormat from "../../helpers/DateFormat";
 
-@Component({
-  components: {ArticlePicture}
-})
-export default class Article extends Vue {
-  @Prop({required: true})
-  article: any;
-
-  get formattedDate() {
-    return DateFormat.toFrDate(this.article.publishedDate);
+export default Vue.extend({
+  name: "Article",
+  components: {ArticlePicture},
+  props: {
+    article: {
+      type: Object,
+      required: true
+    }
+  },
+  computed: {
+    formattedDate() {
+      return DateFormat.toFrDate(this.article.publishedDate);
+    }
   }
-}
+});
 </script>

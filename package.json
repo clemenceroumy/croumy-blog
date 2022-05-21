@@ -12,8 +12,7 @@
     "dayjs": "^1.11.2",
     "gridsome": "^0.7.0",
     "postcss": "^7.0.39",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
-    "vue-property-decorator": "^9.1.2"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
   },
   "devDependencies": {
     "gridsome-plugin-tailwindcss": "^4.1.1",

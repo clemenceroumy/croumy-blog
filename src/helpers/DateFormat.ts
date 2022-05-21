@@ -1,4 +1,4 @@
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 import * as fr from 'dayjs/locale/fr'
 import "./StringFormat";
 import StringFormat from "./StringFormat";
