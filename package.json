@@ -11,6 +11,7 @@
     "autoprefixer": "^9.8.8",
     "dayjs": "^1.11.2",
     "gridsome": "^0.7.0",
+    "marked": "^4.0.16",
     "postcss": "^7.0.39",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
   },

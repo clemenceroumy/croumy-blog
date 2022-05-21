@@ -1,15 +1,15 @@
 <template>
-  <div class="p-16 lg:p-20 wrapper bg-background rounded-lg">
+  <div class="p-16 wrapper bg-background rounded-lg">
     <div class="flex justify-between items-center">
       <div>
         <h1 class="headline">{{ article.title }}</h1>
         <p class="subtitle">{{ formattedDate }}</p>
       </div>
 
-      <ArticlePicture :height="230" :width="350" :url="article.picture.url"></ArticlePicture>
+      <ArticlePicture class="mr-10" :height="230" :width="350" :url="article.picture.url"></ArticlePicture>
     </div>
 
-    <p class="mt-20" v-html="article.content"></p>
+    <p class="mt-20 content" v-html="compiledMarkdown"></p>
   </div>
 </template>
 
@@ -17,6 +17,7 @@
 import Vue from "vue";
 import ArticlePicture from "./ArticlePicture.vue";
 import DateFormat from "../../helpers/DateFormat";
+import { marked } from 'marked';
 
 export default Vue.extend({
   name: "Article",
@@ -30,7 +31,16 @@ export default Vue.extend({
   computed: {
     formattedDate() {
       return DateFormat.toFrDate(this.article.publishedDate);
+    },
+    compiledMarkdown() {
+      return marked(this.article.content);
     }
   }
 });
 </script>
+
+<style>
+.content {
+  text-align: justify;
+}
+</style>
