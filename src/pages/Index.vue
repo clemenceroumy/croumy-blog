@@ -4,11 +4,11 @@
 
     <g-link
         :key="game.slug"
-        v-for="game in $page.gcms.games"
+        v-for="(game, index) in $page.gcms.games"
         class="nav__link"
         :to="'games/' + game.slug"
     >
-      <ArticleShort class="my-5" :article="game"/>
+      <ArticleShort :reversed="index % 2 === 0" class="my-5" :article="game"/>
     </g-link>
   </Layout>
 </template>

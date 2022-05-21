@@ -19,20 +19,22 @@ export default Vue.extend({
       type: String,
       required: true
     },
-    height: {
-      type: Number,
-      default: 230
+    smaller: {
+      type: Boolean,
+      default: false
     },
-    width: {
-      type: Number,
-      default: 350
+    reversed : {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
     cssVars() {
       return {
-        "--height": `${this.height}px`,
-        "--width": `${this.width}px`
+        "--height": this.smaller ? "150px" : "230px",
+        "--width": this.smaller ? "230px" :"350px",
+        "--border-size": this.smaller ? "6px" : "12px",
+        "--rotation": this.reversed ? "-8deg" : "8deg",
       };
     }
   }
@@ -44,7 +46,7 @@ export default Vue.extend({
   width: var(--width);
   height: var(--height);
   position: relative;
-  transform: rotate(8deg);
+  transform: rotate(var(--rotation));
 }
 
 .scotch_upper_right {
@@ -72,6 +74,6 @@ export default Vue.extend({
 .image {
   width: 100%;
   height: 100%;
-  border: 12px solid #FFFFFF;
+  border: var(--border-size) solid #FFFFFF;
 }
 </style>

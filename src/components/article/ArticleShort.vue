@@ -1,15 +1,15 @@
 <template>
   <div class="bg-background rounded-lg p-5 wrapper">
     <div class="flex h-full items-center">
-      <div class="flex flex-col justify-between pr-20">
+      <div class="flex flex-col justify-between" :class="reversed ? 'order-2 ml-16 mr-6' : 'order-1 mr-16 ml-6'">
         <h1 class="header">{{ article.title }}</h1>
         <p class="subtitle">{{ formattedDate }}</p>
 
         <p class="content mt-4" v-html="article.content"></p>
       </div>
 
-      <div class="flex flex-col mr-10">
-        <ArticlePicture :height="150" :width="230" :url="article.picture.url"></ArticlePicture>
+      <div class="flex flex-col" :class="reversed ? 'order-1 ml-10' : 'order-2 mr-10'">
+        <ArticlePicture :reversed="reversed" smaller :url="article.picture.url"></ArticlePicture>
       </div>
     </div>
 
@@ -29,7 +29,7 @@ export default Vue.extend({
       type: Object,
       required: true
     },
-    alignLeft: {
+    reversed: {
       type: Boolean,
       default: false
     }

@@ -6,7 +6,7 @@
         <p class="subtitle">{{ formattedDate }}</p>
       </div>
 
-      <ArticlePicture class="mr-10" :height="230" :width="350" :url="article.picture.url"></ArticlePicture>
+      <ArticlePicture class="mr-10" :url="article.picture.url"></ArticlePicture>
     </div>
 
     <p class="mt-20 content" v-html="compiledMarkdown"></p>
