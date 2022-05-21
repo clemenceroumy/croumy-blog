@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full">
+  <div class="h-full flex flex-col h-screen justify-between">
     <header class="mx-10 pt-5">
       <g-link class="logo" to="/">{{ $static.metadata.siteName.toUpperCase() }}</g-link>
 
@@ -18,11 +18,11 @@
       </div>
     </header>
 
-    <div class="mx-10">
+    <div class="mx-10 mb-auto">
       <slot />
     </div>
 
-    <footer class="flex w-full mb-5 justify-between items-center fixed bottom-0 px-10">
+    <footer class="flex w-full pb-5 justify-between items-center px-10">
       <p>© <span style="font-weight: bold">Clémence Roumy</span> - 2022</p>
 
       <div class="flex items-center">
