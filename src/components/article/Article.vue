@@ -39,8 +39,32 @@ export default Vue.extend({
 });
 </script>
 
-<style>
+<style lang="scss">
 .content {
   text-align: justify;
+}
+
+table {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  tbody {
+    max-width: 50%;
+    min-width: 30%;
+
+    tr {
+      width: 100%;
+      display: flex;
+
+      td {
+        width: 100%;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
 }
 </style>
