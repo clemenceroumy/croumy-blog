@@ -5,7 +5,7 @@
         <h1 class="header">{{ article.title }}</h1>
         <p class="subtitle">{{ formattedDate }}</p>
 
-        <p class="content mt-4" v-html="article.content"></p>
+        <p class="content mt-4" v-html="compiledMarkdown"></p>
       </div>
 
       <div class="flex flex-col" :class="reversed ? 'order-1 ml-10' : 'order-2 mr-10'">
@@ -20,6 +20,7 @@
 import ArticlePicture from "./ArticlePicture.vue";
 import Vue from "vue";
 import DateFormat from "../../helpers/DateFormat";
+import { marked } from 'marked';
 
 export default Vue.extend({
   name: "ArticleShort",
@@ -37,6 +38,9 @@ export default Vue.extend({
   computed: {
     formattedDate() {
       return DateFormat.toFrDate(this.article.publishedDate);
+    },
+    compiledMarkdown() {
+      return marked(this.article.content);
     }
   }
 });

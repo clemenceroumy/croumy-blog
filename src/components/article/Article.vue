@@ -1,5 +1,5 @@
 <template>
-  <div class="p-16 wrapper bg-background rounded-lg">
+  <div class="lg:p-20 md:p-16 p-10 wrapper bg-background rounded-lg">
     <div class="flex justify-between items-center">
       <div>
         <h1 class="headline">{{ article.title }}</h1>
@@ -48,6 +48,8 @@ table {
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
 
   tbody {
     max-width: 50%;
