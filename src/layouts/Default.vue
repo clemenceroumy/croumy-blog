@@ -78,7 +78,7 @@ export default Vue.extend({
     };
   },
   created() {
-    if (!localStorage.theme) {
+    if (typeof window !== 'undefined' && !localStorage.theme) {
       localStorage.theme = "light";
     }
     this.setDark()
@@ -90,7 +90,7 @@ export default Vue.extend({
   },
   methods: {
     switchTheme() {
-      if(window) {
+      if(typeof window !== 'undefined') {
         localStorage.theme = localStorage.theme === "dark" ? "light" : "dark";
         this.setDark()
       }
