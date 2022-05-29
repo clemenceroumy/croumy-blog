@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <h1 class="header">JEUX</h1>
+    <h1 class="header text-text-light dark:text-text-dark">JEUX</h1>
 
     <g-link
         :key="game.slug"

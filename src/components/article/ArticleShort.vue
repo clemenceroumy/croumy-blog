@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-background rounded-lg p-5 wrapper">
+  <div class="bg-bg-article rounded-lg p-5 wrapper">
     <div class="flex h-full items-center">
       <div class="flex flex-col justify-between" :class="reversed ? 'order-2 ml-16 mr-6' : 'order-1 mr-16 ml-6'">
         <h1 class="header">{{ article.title }}</h1>

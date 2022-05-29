@@ -1,48 +1,111 @@
 <template>
   <div class="h-full flex flex-col h-screen justify-between">
     <header class="mx-10 pt-5">
-      <g-link class="logo" to="/">{{ $static.metadata.siteName.toUpperCase() }}</g-link>
+      <div class="flex justify-between items-center">
+        <g-link class="text-text-light dark:text-text-dark logo" to="/">
+          {{ $static.metadata.siteName.toUpperCase() }}
+        </g-link>
+        <a class="text-text-light dark:text-text-dark" @click="switchTheme">{{ themeBtn }}</a>
+      </div>
 
       <div class="flex justify-between">
         <div class="flex gap-4">
           <g-link
-              class="nav__link"
               :to="'games/'"
-          ><h1 class="font-bold">Jeux</h1></g-link>
-          <h1 class="font-bold">Mangas</h1>
-          <h1 class="font-bold">Musique JV</h1>
-          <h1 class="font-bold">Collection</h1>
+          ><h1 class="text-text-light dark:text-text-dark font-bold">Jeux</h1></g-link>
+          <g-link
+              to="/404"
+          ><h1 class="text-text-light dark:text-text-dark font-bold">Mangas</h1></g-link>
+          <g-link
+              to="/404"
+          ><h1 class="text-text-light dark:text-text-dark font-bold">Musique JV</h1></g-link>
+          <g-link
+              to="/404"
+          ><h1 class="text-text-light dark:text-text-dark font-bold">Collection</h1></g-link>
         </div>
 
-        <h1>A propos</h1>
+        <g-link
+            class="nav__link"
+            to="/404"
+        ><h1 class="text-text-light dark:text-text-dark font-bold">A propos</h1></g-link>
       </div>
     </header>
 
     <div class="mx-10 mb-auto">
-      <slot />
+      <slot/>
     </div>
 
-    <footer class="flex w-full pb-5 justify-between items-center px-10">
-      <p>© <span style="font-weight: bold">Clémence Roumy</span> - 2022</p>
+    <footer class="bg-background-light dark:bg-background-dark flex w-full pb-5 justify-between items-center px-10">
+      <p class="text-text-light dark:text-text-dark">© <span style="font-weight: bold">Clémence Roumy</span> - 2022</p>
 
       <div class="flex items-center">
         <div class="flex gap-4">
-          <a href="#">Wishlist</a>
-          <a href="#">Faire un don</a>
+          <a href="#" class="text-text-light dark:text-text-dark">Wishlist</a>
+          <a href="#" class="text-text-light dark:text-text-dark">Faire un don</a>
         </div>
 
         <div class="bg-darkGray mx-5" style="width: 1px; height: 30px;"></div>
 
         <div class="flex gap-2">
-          <a class="mr-2" href="https://twitter.com/clemenceroumy" target="_blank"><g-image src="~/assets/footer/twitter.svg" alt="twitter icon"></g-image></a>
-          <a class="mr-2" href="https://www.instagram.com/clemenceroumy/" target="_blank"><g-image src="~/assets/footer/insta.svg" alt="insta icon"></g-image></a>
-          <a class="mr-2" href="https://www.twitch.tv/croumy2" target="_blank"><g-image src="~/assets/footer/twitch.svg" alt="twitch icon"></g-image></a>
-          <a href="https://open.spotify.com/user/clemence_roumy" target="_blank"><g-image src="~/assets/footer/spotify.svg" alt="spotify icon"></g-image></a>
+          <a class="mr-2" href="https://twitter.com/clemenceroumy" target="_blank">
+            <g-image src="~/assets/footer/twitter.svg" alt="twitter icon"></g-image>
+          </a>
+          <a class="mr-2" href="https://www.instagram.com/clemenceroumy/" target="_blank">
+            <g-image src="~/assets/footer/insta.svg" alt="insta icon"></g-image>
+          </a>
+          <a class="mr-2" href="https://www.twitch.tv/croumy2" target="_blank">
+            <g-image src="~/assets/footer/twitch.svg" alt="twitch icon"></g-image>
+          </a>
+          <a href="https://open.spotify.com/user/clemence_roumy" target="_blank">
+            <g-image src="~/assets/footer/spotify.svg" alt="spotify icon"></g-image>
+          </a>
         </div>
       </div>
     </footer>
   </div>
 </template>
+
+<script>
+import {Vue} from "gridsome/app";
+
+export default Vue.extend({
+  name: "Layout",
+  created() {
+    if (!localStorage.theme) {
+      localStorage.theme = "light";
+    }
+    this.setDark()
+  },
+  computed: {
+    themeBtn() {
+      return localStorage.theme === "dark" ? "Light" : "Dark";
+    }
+  },
+  methods: {
+    switchTheme() {
+      localStorage.theme = localStorage.theme === "dark" ? "light" : "dark";
+      this.setDark()
+    },
+    setDark() {
+      if (localStorage.theme === "dark") {
+        document.documentElement.classList.add("dark");
+        this.colorBodyDark()
+      } else {
+        document.documentElement.classList.remove("dark");
+        this.colorBody()
+      }
+    },
+    colorBody() {
+      document.body.classList.add("light");
+      document.body.classList.remove("dark");
+    },
+    colorBodyDark() {
+      document.body.classList.add("dark");
+      document.body.classList.remove("light");
+    }
+  }
+});
+</script>
 
 <static-query>
 query {

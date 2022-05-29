@@ -1,5 +1,5 @@
 <template>
-  <div class="lg:p-20 md:p-16 p-10 wrapper bg-background rounded-lg">
+  <div class="lg:p-20 md:p-16 p-10 wrapper bg-bg-article rounded-lg">
     <div class="flex justify-between items-center">
       <div>
         <h1 class="headline">{{ article.title }}</h1>
@@ -9,7 +9,7 @@
       <ArticlePicture class="mr-10" :url="article.picture.url"></ArticlePicture>
     </div>
 
-    <p class="mt-20 content" v-html="compiledMarkdown"></p>
+    <p class="mt-20 article-content" v-html="compiledMarkdown"></p>
   </div>
 </template>
 
@@ -17,7 +17,7 @@
 import Vue from "vue";
 import ArticlePicture from "./ArticlePicture.vue";
 import DateFormat from "../../helpers/DateFormat";
-import { marked } from 'marked';
+import {marked} from "marked";
 
 export default Vue.extend({
   name: "Article",
@@ -40,30 +40,34 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-.content {
+.article-content {
   text-align: justify;
-}
 
-table {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  p {
+    margin-bottom: 1rem;
+  }
 
-  tbody {
-    max-width: 50%;
-    min-width: 30%;
+  table {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
 
-    tr {
-      width: 100%;
-      display: flex;
+    tbody {
+      max-width: 50%;
+      min-width: 30%;
 
-      td {
+      tr {
         width: 100%;
+        display: flex;
 
-        img {
+        td {
           width: 100%;
+
+          img {
+            width: 100%;
+          }
         }
       }
     }
