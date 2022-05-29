@@ -2,10 +2,12 @@
   <div class="h-full flex flex-col h-screen justify-between">
     <header class="mx-10 pt-5">
       <div class="flex justify-between items-center">
-        <g-link class="text-text-light dark:text-text-dark logo" to="/">
+        <g-link class="!text-text-light !dark:text-text-dark logo" :class="theme === 'dark' ? 'dark' : 'light'" to="/">
           {{ $static.metadata.siteName.toUpperCase() }}
         </g-link>
-        <a class="text-text-light dark:text-text-dark" @click="switchTheme">{{ themeBtn }}</a>
+        <a class="!text-text-light !dark:text-text-dark cursor-pointer" @click="switchTheme">
+          <g-image :src="themeBtn" alt="btn to change theme (sun if light, moon if dark)"></g-image>
+        </a>
       </div>
 
       <div class="flex justify-between">
@@ -70,6 +72,11 @@ import {Vue} from "gridsome/app";
 
 export default Vue.extend({
   name: "Layout",
+  data() {
+    return {
+      theme: "light"
+    };
+  },
   created() {
     if (!localStorage.theme) {
       localStorage.theme = "light";
@@ -78,7 +85,7 @@ export default Vue.extend({
   },
   computed: {
     themeBtn() {
-      return localStorage.theme === "dark" ? "Light" : "Dark";
+      return this.theme === "dark" ? require("~/assets/header/light.svg") : require("~/assets/header/dark.svg");
     }
   },
   methods: {
@@ -88,9 +95,11 @@ export default Vue.extend({
     },
     setDark() {
       if (localStorage.theme === "dark") {
+        this.theme = "dark";
         document.documentElement.classList.add("dark");
         this.colorBodyDark()
       } else {
+        this.theme = "light";
         document.documentElement.classList.remove("dark");
         this.colorBody()
       }

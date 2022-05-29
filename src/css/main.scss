@@ -38,6 +38,16 @@ a {
 .logo {
   font-family: 'Inter', sans-serif;
   font-size: 32px;
+
+  &.active {
+    &.light {
+      color: black !important;
+    }
+
+    &.dark {
+      color: white !important;
+    }
+  }
 }
 
 .header {
