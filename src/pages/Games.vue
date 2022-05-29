@@ -1,13 +1,15 @@
 <template>
   <Layout>
-    <g-link
-        :key="game.slug"
-        v-for="(game, index) in $page.gcms.games"
-        class="nav__link"
-        :to="'games/' + game.slug"
-    >
-      <ArticleShort :reversed="index % 2 === 0" class="my-5" :article="game"/>
-    </g-link>
+    <div class="my-10">
+      <g-link
+          :key="game.slug"
+          v-for="(game, index) in $page.gcms.games"
+          class="nav__link"
+          :to="'games/' + game.slug"
+      >
+        <ArticleShort :reversed="index % 2 === 0" class="my-5" :article="game"/>
+      </g-link>
+    </div>
   </Layout>
 </template>
 
