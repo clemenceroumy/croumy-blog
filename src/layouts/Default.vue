@@ -78,10 +78,12 @@ export default Vue.extend({
     };
   },
   created() {
-    if (typeof window !== 'undefined' && !localStorage.theme) {
-      localStorage.theme = "light";
+    if (typeof window !== 'undefined') {
+      if (!localStorage.theme) {
+        localStorage.theme = "light";
+      }
+      this.setDark()
     }
-    this.setDark()
   },
   computed: {
     themeBtn() {
