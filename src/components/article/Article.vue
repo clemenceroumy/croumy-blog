@@ -1,15 +1,15 @@
 <template>
-  <div class="lg:p-20 md:p-16 p-10 wrapper bg-bg-article rounded-lg">
+  <div class="lg:p-20 md:p-16 p-10 wrapper bg-bg-article dark:bg-bg-article-dark rounded-lg">
     <div class="flex justify-between items-center">
       <div>
-        <h1 class="headline">{{ article.title }}</h1>
+        <h1 class="text-text-light dark:text-text-dark headline">{{ article.title }}</h1>
         <p class="subtitle">{{ formattedDate }}</p>
       </div>
 
       <ArticlePicture class="mr-10" :url="article.picture.url"></ArticlePicture>
     </div>
 
-    <p class="mt-20 article-content" v-html="compiledMarkdown"></p>
+    <p class="mt-20 article-content text-text-light dark:text-text-dark" v-html="compiledMarkdown"></p>
   </div>
 </template>
 

@@ -1,11 +1,11 @@
 <template>
-  <div class="bg-bg-article rounded-lg p-5 wrapper">
+  <div class="bg-bg-article dark:bg-bg-article-dark rounded-lg p-5 wrapper">
     <div class="flex h-full items-center">
       <div class="flex flex-col justify-between" :class="reversed ? 'order-2 ml-16 mr-6' : 'order-1 mr-16 ml-6'">
-        <h1 class="header">{{ article.title }}</h1>
+        <h1 class="text-text-light dark:text-text-dark header">{{ article.title }}</h1>
         <p class="subtitle">{{ formattedDate }}</p>
 
-        <p class="content mt-4" v-html="compiledMarkdown"></p>
+        <p class="content mt-4 text-text-light dark:text-text-dark" v-html="compiledMarkdown"></p>
       </div>
 
       <div class="flex flex-col" :class="reversed ? 'order-1 ml-10' : 'order-2 mr-10'">
