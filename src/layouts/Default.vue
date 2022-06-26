@@ -37,10 +37,10 @@
       <slot/>
     </div>
 
-    <footer class="bg-background-light dark:bg-background-dark flex w-full pb-5 justify-between items-center px-10">
-      <p class="text-text-light dark:text-text-dark">© <span style="font-weight: bold">Clémence Roumy</span> - 2022</p>
+    <footer class="bg-background-light dark:bg-background-dark grid grid-cols-12 w-full pb-5 items-center px-5 lg:px-10">
+      <p class="col-span-12 md:col-span-6 text-text-light dark:text-text-dark">© <span style="font-weight: bold">Clémence Roumy</span> - 2022</p>
 
-      <div class="flex items-center">
+      <div class="col-span-12 md:col-span-6 flex lg:justify-end items-center mt-10 md:mt-0">
         <div class="flex gap-4">
           <a href="#" class="text-text-light dark:text-text-dark">Wishlist</a>
           <a href="#" class="text-text-light dark:text-text-dark">Faire un don</a>
