@@ -1,31 +1,39 @@
 <template>
   <div class="h-full flex flex-col h-screen justify-between">
-    <header class="mx-10 pt-5">
+    <header class="mx-5 lg:mx-10 pt-5">
       <div class="flex justify-between items-center">
         <g-link class="!text-text-light !dark:text-text-dark logo" :class="theme === 'dark' ? 'dark' : 'light'" to="/">
           {{ $static.metadata.siteName.toUpperCase() }}
         </g-link>
-        <a class="!text-text-light !dark:text-text-dark cursor-pointer" @click="switchTheme">
-          <g-image :src="themeBtn" alt="btn to change theme (sun if light, moon if dark)"></g-image>
-        </a>
+
+        <div class="flex items-center gap-5">
+          <div class="block lg:hidden">
+            <button @click="openDrawer" class="flex items-center px-3 py-2 border rounded dark:text-white text-black dark:border-white border-black">
+              <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title>
+                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
+              </svg>
+            </button>
+          </div>
+
+          <a class="!text-text-light !dark:text-text-dark cursor-pointer" @click="switchTheme">
+            <g-image :src="themeBtn" alt="btn to change theme (sun if light, moon if dark)"></g-image>
+          </a>
+        </div>
       </div>
 
-      <div class="flex justify-between">
-        <div class="flex gap-4">
-          <g-link
-              :to="'games/'"
-          ><h1 class="text-text-light dark:text-text-dark font-bold">Jeux</h1></g-link>
-          <g-link
-              to="/404"
-          ><h1 class="text-text-light dark:text-text-dark font-bold">Mangas</h1></g-link>
-          <g-link
-              to="/404"
-          ><h1 class="text-text-light dark:text-text-dark font-bold">Musique JV</h1></g-link>
-          <g-link
-              to="/404"
-          ><h1 class="text-text-light dark:text-text-dark font-bold">Collection</h1></g-link>
-        </div>
-
+      <div id="menu" class="flex flex-col lg:flex-row items-end mr-10 lg:mr-0 hidden lg:flex gap-0 lg:gap-4">
+        <g-link
+            :to="'games/'"
+        ><h1 class="text-text-light dark:text-text-dark font-bold">Jeux</h1></g-link>
+        <g-link
+            to="/404"
+        ><h1 class="text-text-light dark:text-text-dark font-bold">Mangas</h1></g-link>
+        <g-link
+            to="/404"
+        ><h1 class="text-text-light dark:text-text-dark font-bold">Musique JV</h1></g-link>
+        <g-link
+            to="/404"
+        ><h1 class="text-text-light dark:text-text-dark font-bold">Collection</h1></g-link>
         <g-link
             class="nav__link"
             to="/404"
@@ -78,11 +86,11 @@ export default Vue.extend({
     };
   },
   created() {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       if (!localStorage.theme) {
         localStorage.theme = "light";
       }
-      this.setDark()
+      this.setDark();
     }
   },
   computed: {
@@ -91,21 +99,31 @@ export default Vue.extend({
     }
   },
   methods: {
+    openDrawer() {
+      const element = document.getElementById("menu");
+      if (element.classList.contains("flex")) {
+        element.classList.replace("flex", "hidden");
+      } else {
+        element.classList.replace("hidden", "flex");
+      }
+    },
+
+    //THEME
     switchTheme() {
-      if(typeof window !== 'undefined') {
+      if (typeof window !== "undefined") {
         localStorage.theme = localStorage.theme === "dark" ? "light" : "dark";
-        this.setDark()
+        this.setDark();
       }
     },
     setDark() {
       if (localStorage.theme === "dark") {
         this.theme = "dark";
         document.documentElement.classList.add("dark");
-        this.colorBodyDark()
+        this.colorBodyDark();
       } else {
         this.theme = "light";
         document.documentElement.classList.remove("dark");
-        this.colorBody()
+        this.colorBody();
       }
     },
     colorBody() {
