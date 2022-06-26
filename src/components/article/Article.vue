@@ -1,15 +1,17 @@
 <template>
-  <div class="lg:p-20 md:p-16 p-10 wrapper bg-bg-article dark:bg-bg-article-dark rounded-lg">
-    <div class="flex justify-between items-center">
-      <div>
+  <div class="lg:p-20 md:p-16 sm:p-10 p-5 bg-bg-article dark:bg-bg-article-dark rounded-lg">
+    <div class="grid grid-cols-12 items-center">
+      <div class="col-span-12 lg:col-span-6 order-2 lg:order-1">
         <h1 class="text-text-light dark:text-text-dark headline">{{ article.title }}</h1>
         <p class="subtitle">{{ formattedDate }}</p>
       </div>
 
-      <ArticlePicture class="mr-10" :url="article.picture.url"></ArticlePicture>
+      <div class="col-span-12 lg:col-span-6 flex justify-center lg:justify-end order-1 lg:order-2 mt-10 lg:mt-0 mb-16 lg:mb-0 mr-10 ml-10 lg:ml-0">
+        <ArticlePicture :url="article.picture.url"></ArticlePicture>
+      </div>
     </div>
 
-    <p class="mt-20 article-content text-text-light dark:text-text-dark" v-html="compiledMarkdown"></p>
+    <p class="lg:mt-20 mt-10 article-content text-text-light dark:text-text-dark" v-html="compiledMarkdown"></p>
   </div>
 </template>
 
@@ -57,6 +59,11 @@ export default Vue.extend({
     tbody {
       max-width: 50%;
       min-width: 30%;
+
+      @media (max-width: 1024px) {
+        max-width: 100%;
+        min-width: 100%;
+      }
 
       tr {
         width: 100%;

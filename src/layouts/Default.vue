@@ -33,7 +33,7 @@
       </div>
     </header>
 
-    <div class="mx-10 mb-auto">
+    <div class="mx-5 lg:mx-10 mb-auto">
       <slot/>
     </div>
 

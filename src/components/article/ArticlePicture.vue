@@ -31,8 +31,8 @@ export default Vue.extend({
   computed: {
     cssVars() {
       return {
-        "--max-height": this.smaller ? "150px" : "230px",
-        "--max-width": this.smaller ? "230px" :"350px",
+        "--max-height": this.smaller ? "150px" : "270px",
+        "--max-width": this.smaller ? "230px" :"400px",
         "--border-size": this.smaller ? "6px" : "12px",
         "--rotation": this.reversed ? "-8deg" : "8deg",
       };

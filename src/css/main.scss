@@ -60,6 +60,10 @@ a {
   font-family: 'Syne', sans-serif;
   font-size: 64px;
   font-weight: bold;
+
+  @media (max-width: 640px) {
+    font-size: 36px;
+  }
 }
 
 h1 {
