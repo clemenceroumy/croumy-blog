@@ -1,4 +1,6 @@
-# My personal corner on the web
+# My personal corner of the web
+
+``Status: WIP``
 
 Sharing things I love on my personal website. Be it video games, manga / anime, music, collection or dev things.
 
@@ -12,5 +14,5 @@ This project is develop using the following
 
 ### Mockups
 
-I personally designed everything of the website. Here is the figma link to the mockups https://www.figma.com/file/w12RtYy82Izr1MlqC7eCox/croumy?type=design&node-id=0%3A1&mode=design&t=xQ0YR7Y7lzJqsUnv-1
+I personally designed everything on the website. Here is the figma link to the mockups https://www.figma.com/file/w12RtYy82Izr1MlqC7eCox/croumy?type=design&node-id=0%3A1&mode=design&t=xQ0YR7Y7lzJqsUnv-1
 
