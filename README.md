@@ -16,3 +16,7 @@ This project is develop using the following
 
 I personally designed everything on the website. Here is the figma link to the mockups https://www.figma.com/file/w12RtYy82Izr1MlqC7eCox/croumy?type=design&node-id=0%3A1&mode=design&t=xQ0YR7Y7lzJqsUnv-1
 
+## Dev instructions
+
+- Create a `.env` file at the root of the project and add the variables defined and used in `config/index.ts`
+- Use npm as package manager (at least not pnpm, as there is issues with pnpm x Gridsome)
