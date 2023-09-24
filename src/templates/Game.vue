@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <Article class="my-10" :article="$page.gcms.game"></Article>
+    <Article class="my-10" :article="$page.hygraph.game"></Article>
   </Layout>
 </template>
 
@@ -14,7 +14,7 @@ export default {
 
 <page-query>
 query GetGame($slug: String) {
-gcms {
+hygraph {
 game(where: {slug: $slug}) {
 slug
 title

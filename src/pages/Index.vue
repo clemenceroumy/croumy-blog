@@ -5,7 +5,7 @@
 
       <g-link
           :key="game.slug"
-          v-for="(game, index) in $page.gcms.games"
+          v-for="(game, index) in $page.hygraph.games"
           class="nav__link"
           :to="'games/' + game.slug"
       >
@@ -20,7 +20,7 @@ import ArticleShort from "../components/article/ArticleShort.vue";
 
 export default {
   metaInfo: {
-    title: "Croumy"
+    title: "croumy"
   },
   components: {ArticleShort}
 };
@@ -28,7 +28,7 @@ export default {
 
 <page-query>
 {
-gcms {
+hygraph {
 games {
 slug
 title

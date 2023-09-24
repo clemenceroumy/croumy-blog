@@ -3,7 +3,7 @@
     <div class="my-10">
       <g-link
           :key="game.slug"
-          v-for="(game, index) in $page.gcms.games"
+          v-for="(game, index) in $page.hygraph.games"
           class="nav__link"
           :to="'games/' + game.slug"
       >
@@ -15,7 +15,7 @@
 
 <page-query>
 {
-gcms {
+hygraph {
 games {
 slug
 title

@@ -2,15 +2,15 @@ const tailwindcss = require('tailwindcss')
 const autoprefixer = require('autoprefixer')
 
 module.exports = {
-  siteName: "Croumy",
+  siteName: "croumy",
   plugins: [
     {use: "gridsome-plugin-typescript"},
     {
       use: "@gridsome/source-graphql",
       options: {
         url: process.env.VUE_APP_GRAPHCMS_API,
-        fieldName: "gcms",
-        typeName: "gcmsTypes",
+        fieldName: "hygraph",
+        typeName: "hygraphTypes",
         headers: {
           Authorization: `Bearer ${process.env.VUE_APP_GRAPHCMS_AUTH_TOKEN}`
         }
