@@ -19,7 +19,7 @@ game(where: {slug: $slug}) {
 slug
 title
 content
-publishedDate
+publishedAt
 picture {
 url
 }

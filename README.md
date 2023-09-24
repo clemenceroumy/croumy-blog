@@ -1,14 +1,16 @@
-# Default starter for Gridsome
+# My personal corner on the web
 
-This is the project you get when you run `gridsome create new-project`.
+Sharing things I love on my personal website. Be it video games, manga / anime, music, collection or dev things.
 
-### 1. Install Gridsome CLI tool if you don't have
+## About
 
-`npm install --global @gridsome/cli`
+This project is develop using the following
 
-### 2. Create a Gridsome project
+| Technologies                                                                                                                            | Tools                                                                                        |
+|-----------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
+| <ul><li>[Gridsome](https://gridsome.org/)</li><li>[VueJS](https://vuejs.org/)</li><li>[TailwindCSS](https://tailwindcss.com/)</li></ul> | <ul><li>[Figma](https://www.figma.com/)</li><li>[Hygraph](https://www.hygraph.io/)</li></ul> |
 
-1. `gridsome create my-gridsome-site` to install default starter
-2. `cd my-gridsome-site` to open the folder
-3. `gridsome develop` to start a local dev server at `http://localhost:8080`
-4. Happy coding 🎉🙌
+### Mockups
+
+I personally designed everything of the website. Here is the figma link to the mockups https://www.figma.com/file/w12RtYy82Izr1MlqC7eCox/croumy?type=design&node-id=0%3A1&mode=design&t=xQ0YR7Y7lzJqsUnv-1
+

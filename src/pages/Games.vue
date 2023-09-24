@@ -20,7 +20,7 @@ games {
 slug
 title
 content
-publishedDate
+publishedAt
 picture {
 url
 }

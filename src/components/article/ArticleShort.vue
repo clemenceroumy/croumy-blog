@@ -37,7 +37,7 @@ export default Vue.extend({
   },
   computed: {
     formattedDate() {
-      return DateFormat.toFrDate(this.article.publishedDate);
+      return DateFormat.toFrDate(this.article.publishedAt);
     },
     compiledMarkdown() {
       return marked(this.article.content);

@@ -11,15 +11,16 @@
     "autoprefixer": "^9.8.8",
     "dayjs": "^1.11.2",
     "gridsome": "^0.7.0",
-    "marked": "^4.0.16",
+    "marked": "^4.3.0",
     "postcss": "^7.0.39",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0"
   },
   "devDependencies": {
     "gridsome-plugin-typescript": "^0.4.0",
     "sass": "^1.51.0",
     "sass-loader": "^10",
-    "ts-loader": "~8.2.0",
-    "typescript": "^4.6.4"
+    "typescript": "^5.2.2"
   }
 }
