@@ -27,17 +27,17 @@ export default {
 </script>
 
 <page-query>
-{
-hygraph {
-games {
-slug
-title
-content
-publishedAt
-picture {
-url
-}
-}
-}
+query {
+  hygraph {
+    games {
+      slug
+      title
+      content
+      publishedAt
+      picture {
+        url
+      }
+    }
+  }
 }
 </page-query>

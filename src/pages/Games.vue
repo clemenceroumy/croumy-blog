@@ -14,7 +14,7 @@
 </template>
 
 <page-query>
-{
+query {
 hygraph {
 games {
 slug

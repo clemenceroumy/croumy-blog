@@ -3,6 +3,8 @@ const autoprefixer = require('autoprefixer')
 
 module.exports = {
   siteName: "croumy",
+  siteUrl: 'https://clemenceroumy.github.io',
+  pathPrefix: '/croumy-blog',
   plugins: [
     {use: "gridsome-plugin-typescript"},
     {
@@ -15,7 +17,7 @@ module.exports = {
           Authorization: `Bearer ${process.env.VUE_APP_GRAPHCMS_AUTH_TOKEN}`
         }
       }
-    }
+    },
   ],
   configureWebpack: {
     resolve: {
