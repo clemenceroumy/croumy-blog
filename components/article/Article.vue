@@ -39,7 +39,7 @@ const compiledMarkdown = computed(() => {
 
 </script>
 
-<style lang="scss">
+<style scoped>
 .article-content {
   text-align: justify;
 

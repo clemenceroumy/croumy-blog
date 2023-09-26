@@ -4,8 +4,3 @@
       <p class="flex text-text-light dark:text-text-dark">du moins pas encore ;)</p>
     </div>
 </template>
-
-<script lang="ts" setup>
-
-
-</script>
