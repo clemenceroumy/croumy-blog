@@ -5,7 +5,8 @@ import StringFormat from "./StringFormat";
 dayjs.locale(fr)
 
 export default class DateFormat {
-  static toFrDate(date: Date): string {
+  static toFrDate(date: Date | string | undefined): string {
+    if (!date) { return ""; }
     return StringFormat.capitalizeFirstLetter(dayjs(date).format("dddd DD MMMM YYYY"));
   }
 }

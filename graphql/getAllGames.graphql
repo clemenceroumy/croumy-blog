@@ -1,0 +1,12 @@
+query GetGames {
+    games {
+        content
+        id
+        slug
+        title
+        publishedAt
+        picture {
+            url
+        }
+    }
+}

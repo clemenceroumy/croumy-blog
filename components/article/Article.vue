@@ -8,7 +8,7 @@
 
       <div
           class="col-span-12 lg:col-span-6 flex justify-center lg:justify-end order-1 lg:order-2 mt-10 lg:mt-0 mb-16 lg:mb-0 mr-10 ml-10 lg:ml-0">
-        <ArticlePicture :url="article.picture.url"></ArticlePicture>
+        <ArticlePicture :url="article.picture?.url ?? 'https://placehold.co/600x400'"></ArticlePicture>
       </div>
     </div>
 
@@ -17,14 +17,14 @@
 </template>
 
 <script lang="ts" setup>
-import {computed} from "vue";
+import {computed, PropType} from "vue";
 import ArticlePicture from "./ArticlePicture.vue";
 import DateFormat from "../../helpers/DateFormat";
 import {marked} from "marked";
 
 const props = defineProps({
   article: {
-    type: Object,
+    type: Object as PropType<Article>,
     required: true,
   }
 })
@@ -33,7 +33,7 @@ const formattedDate = computed(() => {
   return DateFormat.toFrDate(props.article.publishedAt);
 })
 const compiledMarkdown = computed(() => {
-  return marked(props.article.content);
+  return marked(props.article?.content ?? "");
 })
 
 

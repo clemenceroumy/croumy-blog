@@ -11,7 +11,7 @@
 
       <div class="col-span-12 lg:col-span-2 order-1 ml-5 mt-5 mb-10 lg:mb-0 lg:mt-0"
            :class="reversed ? 'lg:order-1 lg:ml-10' : 'lg:order-2 lg:mr-10'">
-        <ArticlePicture :reversed="reversed" smaller :url="article.picture.url"></ArticlePicture>
+        <ArticlePicture :reversed="reversed" smaller :url="article.picture?.url ?? 'https://placehold.co/600x400'"></ArticlePicture>
       </div>
     </div>
 
@@ -22,11 +22,11 @@
 import ArticlePicture from "./ArticlePicture.vue";
 import DateFormat from "../../helpers/DateFormat";
 import {marked} from "marked";
-import {ref, computed} from 'vue';
+import {ref, computed, PropType} from 'vue';
 
 const props = defineProps({
   article: {
-    type: Object,
+    type: Object as PropType<Article>,
     required: true
   },
   reversed: {
@@ -39,7 +39,7 @@ const formattedDate = computed(() => {
   return DateFormat.toFrDate(props.article.publishedAt);
 })
 const compiledMarkdown = computed(() => {
-  return marked(props.article.content);
+  return marked(props.article.content ?? "");
 })
 
 </script>

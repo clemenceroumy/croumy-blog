@@ -1,0 +1,6 @@
+schema: './graphql/schema.graphql'
+extensions:
+  endpoints:
+    Default GraphQL Endpoint:
+      url: 'https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/cllv044ck07am01t6gle51l5k/master'
+      introspect: true
