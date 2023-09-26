@@ -4,5 +4,8 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss', 'nuxt-svgo'],
   css: [
     '@/assets/css/main.scss',
-  ]
+  ],
+  svgo: {
+    autoImportPath: './assets/img/'
+  }
 })

@@ -2,8 +2,8 @@
   <div class="h-full flex flex-col h-screen justify-between">
     <header class="mx-5 lg:mx-10 pt-5">
       <div class="flex justify-between items-center">
-        <nuxt-link class="!text-text-light !dark:text-text-dark logo" :class="theme === 'dark' ? 'dark' : 'light'" to="/">
-          CROUMY
+        <nuxt-link to="/">
+          <span class="text-text-light dark:text-text-dark logo">CROUMY</span>
         </nuxt-link>
 
         <div class="flex items-center gap-5">
@@ -17,16 +17,16 @@
             </button>
           </div>
 
-          <a class="!text-text-light !dark:text-text-dark cursor-pointer" @click="switchTheme">
-            <lightAsset v-if="theme === 'dark'" :style="{color: '#FFFFFF'}"/>
-            <darkAsset v-else />
+          <a class="cursor-pointer" @click="switchTheme">
+            <svgo-header-light v-if="theme === 'dark'" filled/>
+            <svgo-header-dark v-else filled />
           </a>
         </div>
       </div>
 
       <div id="menu" class="flex flex-col lg:flex-row items-end mr-10 lg:mr-0 hidden lg:flex gap-0 lg:gap-4">
         <nuxt-link
-            :to="'games/'"
+            to="/games/"
         ><h1 class="text-text-light dark:text-text-dark font-bold">Jeux</h1></nuxt-link>
         <nuxt-link
             to="/404"
@@ -51,7 +51,7 @@
     <footer
         class="bg-background-light dark:bg-background-dark grid grid-cols-12 w-full pb-5 items-center px-5 lg:px-10">
       <p class="col-span-12 md:col-span-6 text-text-light dark:text-text-dark">© <span style="font-weight: bold">Clémence Roumy</span>
-        - 2022</p>
+        - 2023</p>
 
       <div class="col-span-12 md:col-span-6 flex lg:justify-end items-center mt-10 md:mt-0">
         <div class="flex gap-4">
@@ -60,23 +60,23 @@
             don</a>
         </div>
 
-        <div class="bg-darkGray mx-5" style="width: 1px; height: 30px;"></div>
+        <div class="bg-bg-article dark:bg-bg-article-dark mx-5" style="width: 1px; height: 30px;"></div>
 
         <div class="flex gap-2">
           <a class="mr-2" href="https://www.linktree.com/croumy/" target="_blank">
-            <img src="~/assets/footer/linktree.svg" alt="linktree icon" />
+            <svgo-footer-linktree filled alt="linktree icon" />
           </a>
           <a class="mr-2" href="https://www.instagram.com/croumy2/" target="_blank">
-            <img src="~/assets/footer/insta.svg" alt="insta icon" />
+            <svgo-footer-insta filled alt="insta icon" />
           </a>
           <a class="mr-2" href="https://github.com/clemenceroumy" target="_blank">
-            <img src="~/assets/footer/github.svg" alt="github icon" />
+            <svgo-footer-github filled alt="github icon" />
           </a>
           <a class="mr-2" href="https://www.twitch.tv/croumy2" target="_blank">
-            <img src="~/assets/footer/twitch.svg" alt="twitch icon" />
+            <svgo-footer-twitch filled alt="twitch icon" />
           </a>
           <a href="https://open.spotify.com/user/clemence_roumy" target="_blank">
-            <img src="~/assets/footer/spotify.svg" alt="spotify icon" />
+            <svgo-footer-spotify filled alt="spotify icon" />
           </a>
         </div>
       </div>
@@ -86,8 +86,6 @@
 
 <script lang="ts" setup>
 import {ref} from 'vue'
-import darkAsset from '@/assets/img/header/dark.svg'
-import lightAsset from '@/assets/img/header/light.svg'
 
 const theme = ref("light");
 
@@ -140,3 +138,14 @@ function colorBodyDark() {
   document.body.classList.remove("light");
 }
 </script>
+
+<style scoped lang="scss">
+a, p {
+  font-size: 12px;
+}
+
+a svg {
+  width: 20px;
+  height: 20px;
+}
+</style>
