@@ -1,5 +1,5 @@
 <template>
-    <div class="my-10">
+    <div>
       <h1 class="header text-text-light dark:text-text-dark">JEUX</h1>
 
       <nuxt-link

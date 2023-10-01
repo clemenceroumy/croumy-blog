@@ -1,5 +1,5 @@
 <template>
-    <Article class="my-10" :article="data?.game"></Article>
+    <Article :article="data?.game"></Article>
 </template>
 
 <script lang="ts" setup>

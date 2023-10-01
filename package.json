@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "dayjs": "^1.11.10",
+    "firebase": "^10.4.0",
     "graphql-tag": "^2.12.6",
     "marked": "^9.0.3"
   }

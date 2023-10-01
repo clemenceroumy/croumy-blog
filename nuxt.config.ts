@@ -8,6 +8,17 @@ export default defineNuxtConfig({
         baseURL: '/croumy-blog/',
         buildAssetsDir: 'assets'
     },
+    runtimeConfig: {
+        public: {
+            hygraph : {
+                api: String(process.env.VUE_APP_HYGRAPH_API),
+                auth_token: String(process.env.VUE_APP_HYGRAPH_AUTH_TOKEN),
+            },
+            firebase : {
+                config: String(process.env.VUE_APP_FIREBASE_CONFIG),
+            }
+        }
+    },
     modules: [
         '@nuxtjs/tailwindcss',
         'nuxt-svgo',

@@ -35,7 +35,7 @@
             to="/404"
         ><h1 class="text-text-light dark:text-text-dark font-bold">Musique JV</h1></nuxt-link>
         <nuxt-link
-            to="/404"
+            to="/collection"
         ><h1 class="text-text-light dark:text-text-dark font-bold">Collection</h1></nuxt-link>
         <nuxt-link
             class="nav__link"
@@ -44,7 +44,7 @@
       </div>
     </header>
 
-    <div class="mx-5 lg:mx-10 mb-auto">
+    <div class="mx-5 pt-5 pb-10 lg:mx-10 mb-auto">
       <slot/>
     </div>
 
