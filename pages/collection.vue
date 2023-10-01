@@ -1,8 +1,14 @@
 <template>
   <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-10">
-    <a v-for="picture in pictures" :href="`https://www.instagram.com/p/${picture.shortcode}/`" target="_blank">
-      <img class="w-full rounded cursor-pointer item-to-shrink" :src="picture.path" alt="">
-    </a>
+    <div v-for="picture in pictures" class="group">
+      <a :href="`https://www.instagram.com/p/${picture.shortcode}/`" target="_blank" class="relative">
+        <img class="rounded cursor-pointer group-hover:scale-[1.02] scale-100 transition-scale duration-200" :src="picture.path" alt="">
+        <div class="absolute top-0 w-full h-full justify-center items-center bg-bg-article-dark/[.40] hidden group-hover:flex group-hover:scale-[1.02] scale-100 transition-scale duration-200">
+          <Icon name="material-symbols:favorite" color="white" class="w-[30px] h-[30px]"/>
+          <p class="text-white header">{{ picture.likes }}</p>
+        </div>
+      </a>
+    </div>
   </div>
 </template>
 
@@ -17,25 +23,3 @@ onMounted(async () => {
   pictures.value = await collectionService.getAllFiles("instagram")
 })
 </script>
-
-<style scoped>
-@keyframes shrink {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0.9);
-  }
-}
-
-/* Apply the animation to the item when it's not hovered */
-.item-to-shrink {
-  transform: scale(1);
-  transition: transform 0.2s ease-in-out;
-}
-
-.item-to-shrink:hover {
-  transform: scale(1.02);
-  animation: none;
-}
-</style>

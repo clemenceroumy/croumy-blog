@@ -7,7 +7,8 @@ export default defineNuxtConfig({
     modules: [
         '@nuxtjs/tailwindcss',
         'nuxt-svgo',
-        '@nuxtjs/apollo'
+        '@nuxtjs/apollo',
+        'nuxt-icon'
     ],
     app: {
         baseURL: '/croumy-blog/',
