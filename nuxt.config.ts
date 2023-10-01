@@ -4,9 +4,17 @@ export default defineNuxtConfig({
     build: {
       transpile: ['tslib', 'graphql']
     },
+    modules: [
+        '@nuxtjs/tailwindcss',
+        'nuxt-svgo',
+        '@nuxtjs/apollo'
+    ],
     app: {
         baseURL: '/croumy-blog/',
         buildAssetsDir: 'assets'
+    },
+    devServer: {
+        port: 8080
     },
     runtimeConfig: {
         public: {
@@ -19,11 +27,6 @@ export default defineNuxtConfig({
             }
         }
     },
-    modules: [
-        '@nuxtjs/tailwindcss',
-        'nuxt-svgo',
-        '@nuxtjs/apollo'
-    ],
     css: ['@/assets/css/main.scss',],
     svgo: { autoImportPath: './assets/img/' },
     apollo: {

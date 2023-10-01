@@ -13,7 +13,7 @@ export default <Partial<Config>>{
                 darkGray: '#9C8F6E',
                 "bg-article": "#FEF7E5",
                 "bg-article-dark": "#252323"
-            },
+            }
         },
     },
     plugins: [],
