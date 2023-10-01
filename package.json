@@ -16,11 +16,13 @@
     "@nuxtjs/tailwindcss": "^6.8.0",
     "gh-pages": "^6.0.0",
     "nuxt": "^3.7.4",
+    "nuxt-icon": "^0.5.0",
     "nuxt-svgo": "^3.5.3",
     "sass": "^1.68.0"
   },
   "dependencies": {
     "dayjs": "^1.11.10",
+    "firebase": "^10.4.0",
     "graphql-tag": "^2.12.6",
     "marked": "^9.0.3"
   }

@@ -1,5 +1,5 @@
 <template>
-    <div class="my-10">
+    <div>
       <nuxt-link
           :key="game.slug"
           v-for="(game, index) in data?.games"
