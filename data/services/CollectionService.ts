@@ -3,6 +3,8 @@ import CollectionPicture from "~/data/models/CollectionPicture";
 
 export default class CollectionService {
     static async getAllFiles(path: string): Promise<CollectionPicture[]> {
-        return (await StorageDao.getAllFiles(path)).map(filePath => new CollectionPicture(filePath))
+        return (await StorageDao.getAllFiles(path))
+            .map(data => new CollectionPicture(data.path, data.file.name))
+            .sort((a, b) => b.timestamp - a.timestamp)
     }
 }
