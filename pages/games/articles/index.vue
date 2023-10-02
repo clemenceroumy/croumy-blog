@@ -1,12 +1,10 @@
 <template>
     <div>
-      <slot name="title" class="header"></slot>
-
       <nuxt-link
           :key="game.slug"
           v-for="(game, index) in data?.games"
           class="nav__link"
-          :to="'/games/articles/' + game.slug"
+          :to="'/games/' + game.slug"
       >
         <ArticleShort :reversed="index % 2 === 0" class="my-5" :article="game"/>
       </nuxt-link>

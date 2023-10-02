@@ -26,7 +26,7 @@
 
       <div id="menu" class="flex flex-col lg:flex-row items-end mr-10 lg:mr-0 hidden lg:flex gap-0 lg:gap-4">
         <nuxt-link
-            to="/games/"
+            to="/games"
         ><h1 class="text-text-light dark:text-text-dark font-bold">Jeux</h1></nuxt-link>
         <nuxt-link
             to="/404"
