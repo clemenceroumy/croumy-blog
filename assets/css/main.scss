@@ -6,12 +6,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
 
-:root {
-  --primary: #3116FA;
-  --dark-gray: #9C8F6E;
-  --gray: #C4C4C4;
-}
-
 body {
   margin: 0;
   font-family: 'Libre Baskerville', sans-serif;
@@ -28,10 +22,6 @@ body {
 a {
   color: black;
   text-decoration: none;
-}
-
-.active {
-  color: var(--primary) !important;
 }
 
 //TEXTS
@@ -62,6 +52,6 @@ h1 {
 }
 
 .subtitle {
-  color: var(--dark-gray);
+  @apply text-darkGray;
   font-family: 'Libre Baskerville', sans-serif;
 }

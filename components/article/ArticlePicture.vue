@@ -47,7 +47,7 @@ const cssVars = computed(() => ({
 .scotch_upper_right {
   height: 25px;
   width: 65px;
-  background-color: var(--gray);
+  background-color: theme('colors.gray');
   opacity: 0.4;
   transform: rotate(45deg);
   position: absolute;
@@ -58,7 +58,7 @@ const cssVars = computed(() => ({
 .scotch_bottom_left {
   height: 25px;
   width: 65px;
-  background-color: var(--gray);
+  background-color: theme('colors.gray');
   opacity: 0.4;
   transform: rotate(45deg);
   position: absolute;

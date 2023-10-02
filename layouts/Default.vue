@@ -25,22 +25,11 @@
       </div>
 
       <div id="menu" class="flex flex-col lg:flex-row items-end mr-10 lg:mr-0 hidden lg:flex gap-0 lg:gap-4">
-        <nuxt-link
-            to="/games"
-        ><h1 class="text-text-light dark:text-text-dark font-bold">Jeux</h1></nuxt-link>
-        <nuxt-link
-            to="/404"
-        ><h1 class="text-text-light dark:text-text-dark font-bold">Mangas</h1></nuxt-link>
-        <nuxt-link
-            to="/404"
-        ><h1 class="text-text-light dark:text-text-dark font-bold">Musique JV</h1></nuxt-link>
-        <nuxt-link
-            to="/collection"
-        ><h1 class="text-text-light dark:text-text-dark font-bold">Collection</h1></nuxt-link>
-        <nuxt-link
-            class="nav__link"
-            to="/404"
-        ><h1 class="text-text-light dark:text-text-dark font-bold">A propos</h1></nuxt-link>
+        <nuxt-link to="/games"><h1 :class="`${router.currentRoute.value.path === '/games' ? 'text-primary dark:text-darkPrimary' : 'text-text-light dark:text-text-dark' } font-bold`">Jeux</h1></nuxt-link>
+        <nuxt-link to="/404"><h1 :class="`${router.currentRoute.value.path === '/mangas' ? 'text-primary dark:text-darkPrimary' : 'text-text-light dark:text-text-dark' } font-bold`">Mangas</h1></nuxt-link>
+        <nuxt-link to="/404"><h1 :class="`${router.currentRoute.value.path === '/music' ? 'text-primary dark:text-darkPrimary' : 'text-text-light dark:text-text-dark' } font-bold`">Musique JV</h1></nuxt-link>
+        <nuxt-link to="/collection"><h1 :class="`${router.currentRoute.value.path === '/collection' ? 'text-primary dark:text-darkPrimary' : 'text-text-light dark:text-text-dark' } font-bold`">Collection</h1></nuxt-link>
+        <nuxt-link to="/404"><h1 :class="`${router.currentRoute.value.path === '/about' ? 'text-primary dark:text-darkPrimary' : 'text-text-light dark:text-text-dark' } font-bold`">A propos</h1></nuxt-link>
       </div>
     </header>
 
@@ -87,6 +76,7 @@
 <script lang="ts" setup>
 import {ref} from 'vue'
 
+const router = useRouter();
 const theme = ref("light");
 
 onMounted(() => {
