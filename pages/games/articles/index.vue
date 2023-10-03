@@ -14,7 +14,7 @@
 <script lang="ts" setup>
 import ArticleShort from "~/components/article/ArticleShort.vue";
 
-import getAllGames from "~/graphql/getAllGames.graphql"
+import getAllGames from "~/graphql/getAllGamesArticles.graphql"
 
 const { data } = await useAsyncQuery(getAllGames);
 </script>

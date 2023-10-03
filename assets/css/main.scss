@@ -9,6 +9,7 @@
 body {
   margin: 0;
   font-family: 'Libre Baskerville', sans-serif;
+  font-size: 16px;
 
   &.dark {
     background: theme('colors.background-dark');
@@ -62,6 +63,7 @@ a {
 .subtitle {
   @apply text-darkGray;
   font-family: 'Libre Baskerville', sans-serif;
+  font-size: 14px;
 }
 
 .small-subtitle {
