@@ -13,6 +13,7 @@ body {
   &.dark {
     background: theme('colors.background-dark');
   }
+
   &.light {
     background: theme('colors.background-light');
   }
@@ -36,6 +37,18 @@ a {
   font-weight: bold;
 }
 
+.title {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.small-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
 .headline {
   font-family: 'Syne', sans-serif;
   font-size: 64px;
@@ -46,12 +59,12 @@ a {
   }
 }
 
-h1 {
-  font-family: 'Syne', sans-serif;
-  font-size: 24px;
-}
-
 .subtitle {
   @apply text-darkGray;
   font-family: 'Libre Baskerville', sans-serif;
+}
+
+.small-subtitle {
+    font-family: 'Libre Baskerville', sans-serif;
+    font-size: 14px;
 }

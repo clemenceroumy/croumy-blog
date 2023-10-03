@@ -30,7 +30,7 @@ const props = defineProps({
 })
 
 const formattedDate = computed(() => {
-  return DateFormat.toFrDate(props.article.publishedAt);
+  return DateFormat.fromDate(props.article.publishedAt, DateFormat.FULL_DATE_FORMAT);
 })
 const compiledMarkdown = computed(() => {
   return marked(props.article?.content ?? "");

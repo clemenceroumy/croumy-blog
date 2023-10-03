@@ -25,6 +25,9 @@ export default defineNuxtConfig({
             },
             firebase : {
                 config: String(process.env.VUE_APP_FIREBASE_CONFIG),
+            },
+            api: {
+                route: String(process.env.VUE_APP_API_URL),
             }
         }
     },
