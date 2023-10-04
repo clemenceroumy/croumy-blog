@@ -3,13 +3,13 @@
     <slot name="title" class="header"></slot>
 
     <div class="flex flex-col mb-10">
-      <div class="flex justify-between">
+      <div class="flex justify-between mb-2">
         <h1 class="title mb-2 text-text-light dark:text-text-dark">Complétion</h1>
         <nuxt-link class="text-primary dark:text-darkPrimary" to="/games/completion"><h1 class="small-title">Tout
           voir</h1></nuxt-link>
       </div>
 
-      <Completion :limit="6"/>
+      <Completion :limit="6" :activate-search="false"/>
     </div>
 
     <h1 class="title mb-2 text-text-light dark:text-text-dark">Articles</h1>
