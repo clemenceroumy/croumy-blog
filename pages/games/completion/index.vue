@@ -8,13 +8,12 @@
 import HLTBGame from "~/data/models/HLTBGame";
 import CompletedGameInline from "~/components/completion/CompletedGameInline.vue";
 
+const props = defineProps({limit: {type: Number, default: null}})
+
 const config = useRuntimeConfig()
 const games = ref<HLTBGame[]>([])
 
-const {data} = await useFetch<HLTBGame[]>(`${config.public.api.route}/hltb`, {mode: 'no-cors'})
-
-watch(data, () => {
-  games.value = data.value?.map(game => new HLTBGame(game)) ?? []
-}, {immediate: true})
+const {data} = await useFetch<HLTBGame[]>(`${config.public.api.route}/hltb`)
+games.value = data.value?.slice(0, props.limit ?? data.value.length).map(game => new HLTBGame(game)) ?? []
 
 </script>

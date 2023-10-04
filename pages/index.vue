@@ -10,7 +10,4 @@
 
 <script lang="ts" setup>
 import Games from "~/pages/games/index.vue";
-import getAllGames from "~/graphql/getAllGamesArticles.graphql"
-
-const { data } = await useAsyncQuery(getAllGames);
 </script>
