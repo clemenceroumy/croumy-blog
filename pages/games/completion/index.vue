@@ -27,8 +27,8 @@
         />
 
         <Icon
-            :name="sortOrder === sort.asc ? 'solar:sort-from-top-to-bottom-bold' : 'solar:sort-from-bottom-to-top-bold'"
-            class="h-7 w-7 ml-2 cursor-pointer text-text-light dark:text-text-dark"
+            name="solar:sort-from-top-to-bottom-bold"
+            :class="[sortOrder ? 'opened' : 'closed','h-7 w-7 ml-2 cursor-pointer text-text-light dark:text-text-dark']"
             @click="sortOrder = !sortOrder"
         />
       </div>
