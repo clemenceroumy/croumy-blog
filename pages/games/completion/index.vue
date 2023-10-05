@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="activateSearch" class="mb-5 flex">
+    <div v-if="activateSearch" class="mb-5 grid grid-cols-1 md:grid-cols-3 gap-3">
       <input
           type="search"
           name="search"
@@ -8,30 +8,32 @@
           placeholder="Nom du jeu"
           :value="searchValue"
           @input="searchValue = $event.target.value"
-          class="flex-1 rounded-md border-0 py-2 px-5 placeholder:text-gray placeholder:dark:text-bg-article text-text-light dark:text-text-dark bg-white dark:bg-black"
+          class="w-full rounded-md border-0 py-2 px-5 placeholder:text-gray placeholder:dark:text-bg-article text-text-light dark:text-text-dark bg-white dark:bg-black"
       />
 
-      <div class="flex flex-1 ml-5 items-center gap-5">
+      <SelectInput
+          :selected-value="selectedPlatform"
+          :items="platforms"
+          @onChanged="selectedPlatform = Number.parseInt($event)"
+          class="w-full"
+      />
+
+      <div class="flex items-center w-full">
         <SelectInput
-            :selected-value="selectedPlatform"
-            :items="platforms"
-            @onChanged="selectedPlatform = Number.parseInt($event)"/>
+            :selected-value="selectedSortBy"
+            :items="sortBy"
+            @onChanged="selectedSortBy = Number.parseInt($event)"
+            class="w-full"
+        />
 
-        <div class="flex items-center">
-          <SelectInput
-              :selected-value="selectedSortBy"
-              :items="sortBy"
-              @onChanged="selectedSortBy = Number.parseInt($event)"
-          />
-
-          <Icon
-              :name="sortOrder === sort.asc ? 'solar:sort-from-top-to-bottom-bold' : 'solar:sort-from-bottom-to-top-bold'"
-              class="h-7 w-7 ml-2 cursor-pointer text-text-light dark:text-text-dark"
-              @click="sortOrder = !sortOrder"
-          />
-        </div>
+        <Icon
+            :name="sortOrder === sort.asc ? 'solar:sort-from-top-to-bottom-bold' : 'solar:sort-from-bottom-to-top-bold'"
+            class="h-7 w-7 ml-2 cursor-pointer text-text-light dark:text-text-dark"
+            @click="sortOrder = !sortOrder"
+        />
       </div>
     </div>
+
 
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
       <CompletedGameInline :game="game" v-for="game in filteredGames" :key="game.id"/>
@@ -78,7 +80,7 @@ const platforms = computed(() => {
       }, [] as string[])
   ].forEach((platform, index) => platformsItem[index] = platform)
 
- return platformsItem
+  return platformsItem
 })
 
 const selectedPlatformName = computed(() => platforms.value[selectedPlatform.value])
