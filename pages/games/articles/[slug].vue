@@ -4,7 +4,7 @@
 
 <script lang="ts" setup>
 import Article from "~/components/article/Article.vue";
-import getGameBySlug from "~/graphql/getGameBySlug.graphql"
+import getGameBySlug from "~/graphql/getGameArticleBySlug.graphql"
 
 const route = useRoute();
 

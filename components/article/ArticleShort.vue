@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-bg-article dark:bg-bg-article-dark rounded-lg p-5">
+  <div class="bg-bg-article dark:bg-bg-article-dark rounded-lg p-3">
     <div class="grid grid-cols-12 h-full items-center md:my-5">
       <div class="col-span-12 lg:col-span-10 order-2"
            :class="reversed ? 'lg:order-2 lg:ml-16 lg:mr-6' : 'lg:order-1 lg:mr-16 lg:ml-6'">
@@ -36,7 +36,7 @@ const props = defineProps({
 })
 
 const formattedDate = computed(() => {
-  return DateFormat.toFrDate(props.article.publishedAt);
+  return DateFormat.fromDate(props.article.publishedAt, DateFormat.FULL_DATE_FORMAT);
 })
 const compiledMarkdown = computed(() => {
   return marked(props.article.content ?? "");

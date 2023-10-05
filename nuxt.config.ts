@@ -8,11 +8,13 @@ export default defineNuxtConfig({
         '@nuxtjs/tailwindcss',
         'nuxt-svgo',
         '@nuxtjs/apollo',
-        'nuxt-icon'
+        'nuxt-icon',
+        'nuxt-headlessui'
     ],
     app: {
         baseURL: '/croumy-blog/',
-        buildAssetsDir: 'assets'
+        buildAssetsDir: 'assets',
+        pageTransition: { name: 'page', mode: 'out-in' }
     },
     devServer: {
         port: 8080
@@ -25,6 +27,9 @@ export default defineNuxtConfig({
             },
             firebase : {
                 config: String(process.env.VUE_APP_FIREBASE_CONFIG),
+            },
+            api: {
+                route: String(process.env.VUE_APP_API_URL),
             }
         }
     },

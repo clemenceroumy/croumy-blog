@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    <p class="lg:mt-20 mt-10 article-content text-text-light dark:text-text-dark" v-html="compiledMarkdown"></p>
+    <div class="lg:mt-20 mt-10 article-content text-text-light dark:text-text-dark" v-html="compiledMarkdown"></div>
   </div>
 </template>
 
@@ -30,21 +30,23 @@ const props = defineProps({
 })
 
 const formattedDate = computed(() => {
-  return DateFormat.toFrDate(props.article.publishedAt);
+  return DateFormat.fromDate(props.article.publishedAt, DateFormat.FULL_DATE_FORMAT);
 })
 const compiledMarkdown = computed(() => {
   return marked(props.article?.content ?? "");
 })
-
-
 </script>
 
-<style scoped>
+<style lang="scss">
 .article-content {
   text-align: justify;
 
   p {
     margin-bottom: 1rem;
+  }
+
+  a {
+    @apply text-darkGray;
   }
 
   table {

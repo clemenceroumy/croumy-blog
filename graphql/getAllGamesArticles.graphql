@@ -1,9 +1,9 @@
-query GetGameBySlug($slug: String!) {
-    game(where: {slug: $slug}) {
+query GetGamesArticles {
+    games {
+        content
         id
         slug
         title
-        content
         publishedAt
         picture {
             url

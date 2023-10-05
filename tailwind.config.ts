@@ -5,12 +5,14 @@ export default <Partial<Config>>{
     theme: {
         extend: {
             colors: {
-                "background-light": "#FFFFFF",
+                "background-light": "#FFFCF4",
                 "background-dark": "#0D1317",
                 "text-light": "#000000",
                 "text-dark": "#FFFFFF",
-                primary: '#3116FA',
+                primary: '#E14428',
+                darkPrimary: '#E95432',
                 darkGray: '#9C8F6E',
+                gray: '#C4C4C4',
                 "bg-article": "#FEF7E5",
                 "bg-article-dark": "#252323"
             }
