@@ -13,7 +13,7 @@ export default class HLTBGame {
         this.name = copy.name;
         this.platform = copy.platform;
         this.picture = copy.picture;
-        this.completedDate = copy.completedDate;
+        this.completedDate = DateFormat.toDate(copy.completedDate);
         this.totalTime = copy.totalTime;
     }
 

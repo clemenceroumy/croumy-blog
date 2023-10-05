@@ -17,6 +17,10 @@ export default class DateFormat {
     return StringFormat.capitalizeFirstLetter(dayjs(date).format(format));
   }
 
+  static toDate(date: string | Date): Date {
+    return dayjs(date).toDate();
+  }
+
   static secondsToTime(value: number): string {
     let duration = dayjs.duration(value, 'seconds')
     const hours = Math.trunc(duration.asHours())

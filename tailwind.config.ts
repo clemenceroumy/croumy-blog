@@ -5,7 +5,7 @@ export default <Partial<Config>>{
     theme: {
         extend: {
             colors: {
-                "background-light": "#FFFFFF",
+                "background-light": "#FFFCF4",
                 "background-dark": "#0D1317",
                 "text-light": "#000000",
                 "text-dark": "#FFFFFF",
