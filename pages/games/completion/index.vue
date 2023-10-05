@@ -8,7 +8,7 @@
           placeholder="Nom du jeu"
           :value="searchValue"
           @input="searchValue = $event.target.value"
-          class="w-full rounded-md border-0 py-2 px-5 placeholder:text-gray placeholder:dark:text-bg-article text-text-light dark:text-text-dark bg-white dark:bg-black"
+          class="w-full rounded-md border-0 py-2 px-5 placeholder:text-gray text-text-light dark:text-text-dark bg-white dark:bg-black"
       />
 
       <SelectInput
@@ -73,7 +73,7 @@ games.value = data.value?.slice(0, props.limit ?? data.value.length).map(game =>
 
 const platforms = computed(() => {
   const platformsItem = {} as { [id: number]: string }
-  [...["Aucune"], ...games.value
+  [...["------"], ...games.value
       .reduce((acc, game) => {
         if (!acc.includes(game.platform)) acc.push(game.platform)
         return acc
@@ -88,7 +88,7 @@ const selectedPlatformName = computed(() => platforms.value[selectedPlatform.val
 const filteredGames = computed(() => games.value
     .filter(game => game.name.toLowerCase().includes(searchValue.value.toLowerCase())
         && (game.platform.toLowerCase().includes(selectedPlatformName.value.toLowerCase())
-            || selectedPlatformName.value === "Aucune")
+            || selectedPlatformName.value === "------")
     )
     .sort((a, b) => {
       switch (selectedSortBy.value) {

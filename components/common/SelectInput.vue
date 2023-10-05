@@ -52,15 +52,3 @@ const props = defineProps({
 
 const value = ref(props.selectedValue)
 </script>
-
-<style>
-.opened {
-  transform: rotate(-180deg);
-  transition: transform 0.2s ease-out;
-}
-
-.closed {
-  transform: rotate(0deg);
-  transition: transform 0.2s ease-out;
-}
-</style>

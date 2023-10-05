@@ -13,7 +13,8 @@ export default defineNuxtConfig({
     ],
     app: {
         baseURL: '/croumy-blog/',
-        buildAssetsDir: 'assets'
+        buildAssetsDir: 'assets',
+        pageTransition: { name: 'page', mode: 'out-in' }
     },
     devServer: {
         port: 8080
