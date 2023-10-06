@@ -2,7 +2,7 @@
     <div>
       <Games>
         <template v-slot:title>
-          <h1 class="header text-text-light dark:text-text-dark">JEUX</h1>
+          <h1 class="header text-text-light dark:text-text-dark">{{ $t('pages.games').toUpperCase() }}</h1>
         </template>
       </Games>
     </div>

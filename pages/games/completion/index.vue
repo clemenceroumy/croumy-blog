@@ -5,7 +5,7 @@
           type="search"
           name="search"
           id="search"
-          placeholder="Nom du jeu"
+          :placeholder="$t('games.searchPlaceholder')"
           :value="searchValue"
           @input="searchValue = $event.target.value"
           class="w-full rounded-md border-0 py-2 px-5 placeholder:text-gray text-text-light dark:text-text-dark bg-white dark:bg-black"
@@ -53,12 +53,13 @@ const props = defineProps({
 })
 
 const config = useRuntimeConfig()
+const {t} = useI18n()
 
 const sortBy: { [id: number]: string } = {
-  0: "Date de complétion",
-  1: "Nom",
-  2: "Plateforme",
-  3: "Temps de jeu",
+  0: t("games.sortBy.completionDate"),
+  1: t("games.sortBy.name"),
+  2: t("games.sortBy.platform"),
+  3: t("games.sortBy.playtime"),
 }
 const sort = {"asc": true, "desc": false}
 

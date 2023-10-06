@@ -13,6 +13,7 @@
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxtjs/apollo": "^5.0.0-alpha.6",
+    "@nuxtjs/i18n": "^8.0.0-rc.5",
     "@nuxtjs/tailwindcss": "^6.8.0",
     "gh-pages": "^6.0.0",
     "nuxt": "^3.7.4",

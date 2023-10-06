@@ -1,0 +1,35 @@
+{
+  "appName": "CROUMY",
+  "pages": {
+    "games": "Jeux",
+    "mangas": "Mangas",
+    "gamesCompletion": "Complétion",
+    "articles": "Articles",
+    "music": "Musique JV",
+    "collection": "Collection",
+    "about": "À propos"
+  },
+  "footer": {
+    "wishlist": "Wishlist",
+    "donation": "Faire un don"
+  },
+  "global": {
+    "seeAll": "Tout voir"
+  },
+  "404": {
+    "title": "Cette page n'existe pas ...",
+    "subtitle": "du moins pas encore ;)"
+  },
+  "music": {
+    "description": "Parce que la musique de jeu vidéo, c'est aussi de la musique"
+  },
+  "games": {
+    "searchPlaceholder": "Nom du jeu",
+    "sortBy": {
+      "completionDate": "Date de complétion",
+      "name": "Nom",
+      "platform": "Plateforme",
+      "playtime": "Temps de jeu"
+    }
+  }
+}

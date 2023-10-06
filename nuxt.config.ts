@@ -9,7 +9,8 @@ export default defineNuxtConfig({
         'nuxt-svgo',
         '@nuxtjs/apollo',
         'nuxt-icon',
-        'nuxt-headlessui'
+        'nuxt-headlessui',
+        '@nuxtjs/i18n',
     ],
     app: {
         baseURL: '/croumy-blog/',
@@ -35,6 +36,9 @@ export default defineNuxtConfig({
     },
     css: ['@/assets/css/main.scss',],
     svgo: { autoImportPath: './assets/img/' },
+    i18n: {
+        vueI18n: './i18n/config.ts',
+    },
     apollo: {
         clients: {
             default: {
