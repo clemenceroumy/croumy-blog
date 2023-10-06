@@ -1,6 +1,6 @@
 # My personal corner of the web
 
-``Status: WIP (switching from Gridsome to Nuxt)``
+``Status: WIP``
 
 Sharing things I love on my personal website. Be it video games, manga / anime, music, collection or dev things.
 
@@ -8,9 +8,10 @@ Sharing things I love on my personal website. Be it video games, manga / anime, 
 
 This project is develop using the following
 
-| Technologies                                                                                                                    | Tools                                                                                        |
-|---------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
-| <ul><li>[Nuxt](https://nuxt.com/)</li><li>[VueJS](https://vuejs.org/)</li><li>[TailwindCSS](https://tailwindcss.com/)</li></ul> | <ul><li>[Figma](https://www.figma.com/)</li><li>[Hygraph](https://www.hygraph.io/)</li></ul> |
+| | Technologies                                                                                                                    | Tools                                                                                        |
+|---|---------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
+| FRONTEND | <ul><li>[Nuxt](https://nuxt.com/)</li><li>[VueJS](https://vuejs.org/)</li><li>[TailwindCSS](https://tailwindcss.com/)</li><li>[HeadlessUI](https://headlessui.com)</li></ul> | <ul><li>[Figma](https://www.figma.com/)</li><li>[Hygraph](https://www.hygraph.io/)</li><li>[Github Pages](https://pages.github.com)</li></ul> |
+| [BACKEND](https://github.com/clemenceroumy/croumy-blog-api) | <ul><li>[NestJS](https://docs.nestjs.com)</li><li>[Firebase](firebase.google.com/)</li></ul> | <ul><li>[Render](https://render.com)</li></ul> |
 
 ### Mockups
 
@@ -18,5 +19,4 @@ I personally designed everything on the website. Here is the figma link to the m
 
 ## Dev instructions
 
-- Create a `.env` file at the root of the project and add the variables defined and used in `config/index.ts`
-- Use npm as package manager (at least not pnpm, as there is issues with pnpm x Gridsome)
+- Create a `.env` file at the root of the project and add the variables defined and used in `nuxt.config.ts`
