@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full flex flex-col h-screen justify-between">
+  <div class="min-h-screen flex flex-col justify-between bg-background-light dark:bg-background-dark">
     <header class="mx-5 lg:mx-10 pt-5">
       <div class="flex justify-between items-center">
         <nuxt-link to="/">
@@ -24,7 +24,7 @@
         </div>
       </div>
 
-      <div id="menu" class="flex flex-col lg:flex-row items-end mr-10 lg:mr-0 hidden lg:flex gap-0 lg:gap-4">
+      <div id="menu" class="flex-col lg:flex-row items-end mr-10 lg:mr-0 hidden lg:flex gap-0 lg:gap-4">
         <nuxt-link to="/games"><h1 :class="`${router.currentRoute.value.path === '/games' ? 'text-primary dark:text-darkPrimary' : 'text-text-light dark:text-text-dark' } font-bold title`">{{ $t('pages.games') }}</h1></nuxt-link>
         <nuxt-link to="/404"><h1 :class="`${router.currentRoute.value.path === '/mangas' ? 'text-primary dark:text-darkPrimary' : 'text-text-light dark:text-text-dark' } font-bold title`">{{ $t('pages.mangas') }}</h1></nuxt-link>
         <nuxt-link to="/music"><h1 :class="`${router.currentRoute.value.path === '/music' ? 'text-primary dark:text-darkPrimary' : 'text-text-light dark:text-text-dark' } font-bold title`">{{ $t('pages.music') }}</h1></nuxt-link>
