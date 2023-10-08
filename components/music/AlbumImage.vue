@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-background-dark w-full h-full p-[15%] rounded-full">
+    <div class="bg-black w-full h-full p-[15%] cursor-pointer rounded-full">
       <img :src="albumPicture" class="rounded-full w-full h-full object-cover"  alt="album picture"/>
     </div>
 </template>
