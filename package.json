@@ -27,6 +27,7 @@
     "firebase": "^10.4.0",
     "graphql-tag": "^2.12.6",
     "marked": "^9.0.3",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vue-audio-visual": "^3.0.5"
   }
 }

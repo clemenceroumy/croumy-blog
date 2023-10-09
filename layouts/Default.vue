@@ -38,7 +38,7 @@
     </div>
 
     <footer
-        class="bg-background-light dark:bg-background-dark grid grid-cols-12 w-full pb-5 items-center px-5 lg:px-10">
+        class="bg-background-light dark:bg-background-dark grid grid-cols-12 w-full pb-5 items-center px-5 lg:px-10 z-10">
       <p class="col-span-12 md:col-span-6 text-text-light dark:text-text-dark">© <span style="font-weight: bold">Clémence Roumy</span>
         - 2023</p>
 

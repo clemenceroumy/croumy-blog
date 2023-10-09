@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <div class="grid grid-cols-2 mt-5">
-      <div class="flex flex-col 2xl:32 xl:mr-24 lg:mr-10 md:mr-6 sm:mr-3">
+    <div class="grid grid-cols-2 mt-5 h-[calc(100vh-240px)] bg-green-300">
+      <div class="flex flex-col 2xl:32 xl:mr-24 lg:mr-10 md:mr-6 sm:mr-3 overflow-y-scroll overscroll-y-auto">
         <div v-for="track in tracks" class="flex items-center justify-between mb-5">
           <!-- TRACK -->
           <div class="flex h-full">
@@ -32,29 +31,36 @@
         </div>
       </div>
 
-      <div class="rounded-md w-[90%] aspect-square p-10 bg-bg-article dark:bg-bg-article-dark shadow relative group">
-        <AlbumImage :class="isPlaying ? 'spin' : ''" :album-picture="playingTrack?.albumPicture ?? ''"></AlbumImage>
-        <!-- LITTLE HOLE OF VINYL -->
-        <div class="w-full h-full pointer-events-none top-0 left-0 absolute flex justify-center items-center">
-          <div class="h-[20px] w-[20px] rounded-full bg-bg-article dark:bg-bg-article-dark shadow-inner"></div>
+      <div class="flex flex-col items-center justify-center h-full">
+        <div class="rounded-md square-vinyl p-10 bg-bg-article dark:bg-bg-article-dark shadow relative group">
+          <AlbumImage :class="isPlaying ? 'spin' : ''" :album-picture="playingTrack?.albumPicture ?? ''"></AlbumImage>
+          <!-- LITTLE HOLE OF VINYL -->
+          <div class="w-full h-full pointer-events-none top-0 left-0 absolute flex justify-center items-center">
+            <div class="h-[20px] w-[20px] rounded-full bg-bg-article dark:bg-bg-article-dark shadow-inner"></div>
+          </div>
+          <!-- PLAY/ PAUSE BTNS-->
+          <div class="w-full h-full top-0 left-0 absolute justify-center items-center hidden group-hover:flex">
+            <Icon
+                @click="playingTrack != null ? onPlayPauseTrack(playingTrack): null"
+                class="h-[70px] w-[70px] cursor-pointer"
+                :name="isPlaying ? 'material-symbols:pause-rounded' : 'material-symbols:play-arrow-rounded'"
+            />
+          </div>
         </div>
-        <!-- PLAY/ PAUSE BTNS-->
-        <div class="w-full h-full top-0 left-0 absolute justify-center items-center hidden group-hover:flex">
-          <Icon
-              @click="playingTrack != null ? onPlayPauseTrack(playingTrack): null"
-              class="h-[70px] w-[70px] cursor-pointer"
-              :name="isPlaying ? 'material-symbols:pause-rounded' : 'material-symbols:play-arrow-rounded'"
-          />
-        </div>
+
+        <!--<div>
+          <audio ref="player" :src="playerSrc" crossorigin="anonymous" controls></audio>
+          <canvas ref="canvas" />
+        </div>-->
       </div>
     </div>
-  </div>
 </template>
 
 <script setup lang="ts">
 
 import Track from "~/data/models/Track";
 import AlbumImage from "~/components/music/AlbumImage.vue";
+import {useAVLine, AVLine} from 'vue-audio-visual'
 
 const config = useRuntimeConfig()
 
@@ -62,6 +68,12 @@ const tracks = ref((await useFetch<Track[]>((`${config.public.api.route}/spotify
 const playingTrack = ref<Track | null>()
 const playingTrackAudio = ref<HTMLAudioElement | null>(null)
 const isPlaying = ref(false)
+
+const player = ref(null)
+const canvas = ref(null)
+const playerSrc = ref("https://p.scdn.co/mp3-preview/805bbe52bc7f8412e9027579787251375e6b847d?cid=11381bbca5f3479f9462199118c15ad9")
+
+useAVLine(player, canvas, {src: playerSrc, lineColor: 'black' })
 
 watch(playingTrackAudio, (_) => {
   playingTrackAudio.value?.addEventListener('ended', () => isPlaying.value = false)
@@ -77,6 +89,8 @@ function onPlayPauseTrack(track: Track) {
     playingTrack.value = track // SET NEW TRACK, TRIGGER WATCH
     playingTrackAudio.value = new Audio(track.previewUrl)
     isPlaying.value = true // TRIGGER WATCH
+
+    playerSrc.value = track.previewUrl
   }
 
   isPlaying.value ? playingTrackAudio.value?.play() : playingTrackAudio.value?.pause()
@@ -94,5 +108,27 @@ function onPlayPauseTrack(track: Track) {
     }
   }
   animation: spin 10s linear infinite;
+}
+
+$screen-height: calc(100vh - 240px); // SCREEN HEIGHT MINUS HEADER AND FOOTER
+
+@media (max-width: 1330px) {
+  .square-vinyl {
+    aspect-ratio: 1/1;
+    width: 100%;
+    height: auto;
+    max-height: $screen-height;
+    max-width: min($screen-height, 100%);
+  }
+}
+
+@media (min-width: 1330px) {
+  .square-vinyl {
+    aspect-ratio: 1/1;
+    height: 90%;
+    width: auto;
+    max-height: $screen-height;
+    max-width: min($screen-height,100%);
+  }
 }
 </style>
