@@ -1,5 +1,5 @@
 <template>
-    <div class="grid grid-cols-2 mt-5 h-[calc(100vh-240px)]">
+    <div class="grid grid-cols-1 sm:grid-cols-2 mt-5 h-[calc(100vh-240px)]">
       <div class="flex flex-col mr-5 overflow-y-scroll overscroll-y-auto">
         <div v-for="track in tracks" class="flex mr-5 items-center justify-between mb-5">
           <!-- TRACK -->
@@ -31,7 +31,7 @@
         </div>
       </div>
 
-      <div class="flex flex-col items-center justify-center h-full">
+      <div class="hidden sm:flex flex-col items-center justify-center h-full ">
         <div class="rounded-md square-vinyl p-10 bg-bg-article dark:bg-bg-article-dark shadow relative group">
           <AlbumImage :class="isPlaying ? 'spin' : ''" :album-picture="playingTrack?.albumPicture ?? ''"></AlbumImage>
           <!-- LITTLE HOLE OF VINYL -->
