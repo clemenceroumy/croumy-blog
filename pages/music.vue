@@ -104,7 +104,7 @@ function onPlayPauseTrack(track: Track) {
       transform: rotate(360deg);
     }
   }
-  animation: spin 10s linear infinite;
+  animation: spin 8s linear infinite;
 }
 
 $screen-height: calc(100vh - 240px); // SCREEN HEIGHT MINUS HEADER AND FOOTER
