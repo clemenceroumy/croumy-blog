@@ -1,7 +1,7 @@
 <template>
-    <div class="grid grid-cols-2 mt-5 h-[calc(100vh-240px)] bg-green-300">
-      <div class="flex flex-col 2xl:32 xl:mr-24 lg:mr-10 md:mr-6 sm:mr-3 overflow-y-scroll overscroll-y-auto">
-        <div v-for="track in tracks" class="flex items-center justify-between mb-5">
+    <div class="grid grid-cols-2 mt-5 h-[calc(100vh-240px)]">
+      <div class="flex flex-col mr-5 overflow-y-scroll overscroll-y-auto">
+        <div v-for="track in tracks" class="flex mr-5 items-center justify-between mb-5">
           <!-- TRACK -->
           <div class="flex h-full">
             <div :class="`w-[90px] h-[90px] relative group/track`">
@@ -48,10 +48,10 @@
           </div>
         </div>
 
-        <!--<div>
-          <audio ref="player" :src="playerSrc" crossorigin="anonymous" controls></audio>
+        <!-- MUSIC VISUALISATION-->
+        <div class="h-[70px] mt-[10px]">
           <canvas ref="canvas" />
-        </div>-->
+        </div>
       </div>
     </div>
 </template>
@@ -60,7 +60,7 @@
 
 import Track from "~/data/models/Track";
 import AlbumImage from "~/components/music/AlbumImage.vue";
-import {useAVLine, AVLine} from 'vue-audio-visual'
+import {useAVLine} from 'vue-audio-visual'
 
 const config = useRuntimeConfig()
 
@@ -69,11 +69,7 @@ const playingTrack = ref<Track | null>()
 const playingTrackAudio = ref<HTMLAudioElement | null>(null)
 const isPlaying = ref(false)
 
-const player = ref(null)
 const canvas = ref(null)
-const playerSrc = ref("https://p.scdn.co/mp3-preview/805bbe52bc7f8412e9027579787251375e6b847d?cid=11381bbca5f3479f9462199118c15ad9")
-
-useAVLine(player, canvas, {src: playerSrc, lineColor: 'black' })
 
 watch(playingTrackAudio, (_) => {
   playingTrackAudio.value?.addEventListener('ended', () => isPlaying.value = false)
@@ -88,9 +84,10 @@ function onPlayPauseTrack(track: Track) {
     playingTrackAudio.value?.pause() // STOP PREVIOUS AUDIO
     playingTrack.value = track // SET NEW TRACK, TRIGGER WATCH
     playingTrackAudio.value = new Audio(track.previewUrl)
+    playingTrackAudio.value.crossOrigin = "anonymous"
     isPlaying.value = true // TRIGGER WATCH
 
-    playerSrc.value = track.previewUrl
+    useAVLine(playingTrackAudio.value, canvas, {src: track.previewUrl, lineColor: 'black', lineWidth: 1, corsAnonym: true})
   }
 
   isPlaying.value ? playingTrackAudio.value?.play() : playingTrackAudio.value?.pause()
@@ -111,8 +108,9 @@ function onPlayPauseTrack(track: Track) {
 }
 
 $screen-height: calc(100vh - 240px); // SCREEN HEIGHT MINUS HEADER AND FOOTER
+$vinyl-space: calc($screen-height - 70px - 10px); // SCREEN HEIGHT MINUS VISUALIZATION
 
-@media (max-width: 1330px) {
+@media (max-width: 1620px) {
   .square-vinyl {
     aspect-ratio: 1/1;
     width: 100%;
@@ -122,13 +120,13 @@ $screen-height: calc(100vh - 240px); // SCREEN HEIGHT MINUS HEADER AND FOOTER
   }
 }
 
-@media (min-width: 1330px) {
+@media (min-width: 1620px) {
   .square-vinyl {
     aspect-ratio: 1/1;
-    height: 90%;
+    height: 100%;
     width: auto;
     max-height: $screen-height;
-    max-width: min($screen-height,100%);
+    max-width: 100%;
   }
 }
 </style>
