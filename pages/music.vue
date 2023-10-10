@@ -87,7 +87,14 @@ function onPlayPauseTrack(track: Track) {
     playingTrackAudio.value.crossOrigin = "anonymous"
     isPlaying.value = true // TRIGGER WATCH
 
-    useAVLine(playingTrackAudio.value, canvas, {src: track.previewUrl, lineColor: 'black', lineWidth: 1, corsAnonym: true})
+    // REDRAW VISUALISATION
+    const lineColor = localStorage.theme === 'dark' ? 'white' : 'black'
+    useAVLine(playingTrackAudio.value, canvas, {
+      src: track.previewUrl,
+      lineColor: lineColor,
+      lineWidth: 1,
+      corsAnonym: true
+    })
   }
 
   isPlaying.value ? playingTrackAudio.value?.play() : playingTrackAudio.value?.pause()
