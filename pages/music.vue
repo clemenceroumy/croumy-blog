@@ -115,8 +115,8 @@ $vinyl-space: calc($screen-height - 70px - 10px); // SCREEN HEIGHT MINUS VISUALI
     aspect-ratio: 1/1;
     width: 100%;
     height: auto;
-    max-height: $screen-height;
-    max-width: min($screen-height, 100%);
+    max-height: $vinyl-space;
+    max-width: min($vinyl-space, 100%);
   }
 }
 
@@ -125,7 +125,7 @@ $vinyl-space: calc($screen-height - 70px - 10px); // SCREEN HEIGHT MINUS VISUALI
     aspect-ratio: 1/1;
     height: 100%;
     width: auto;
-    max-height: $screen-height;
+    max-height: $vinyl-space;
     max-width: 100%;
   }
 }
