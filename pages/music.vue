@@ -33,7 +33,7 @@
 
       <div class="hidden sm:flex flex-col items-center justify-center h-full ">
         <div class="rounded-md square-vinyl p-10 bg-bg-article dark:bg-bg-article-dark shadow relative group">
-          <AlbumImage :class="isPlaying ? 'spin' : ''" :album-picture="playingTrack?.albumPicture ?? ''"></AlbumImage>
+          <AlbumImage :class="isPlaying ? 'spin' : 'spin paused'" :album-picture="playingTrack?.albumPicture ?? ''"></AlbumImage>
           <!-- LITTLE HOLE OF VINYL -->
           <div class="w-full h-full pointer-events-none top-0 left-0 absolute flex justify-center items-center">
             <div class="h-[20px] w-[20px] rounded-full bg-bg-article dark:bg-bg-article-dark shadow-inner"></div>
@@ -112,6 +112,10 @@ function onPlayPauseTrack(track: Track) {
     }
   }
   animation: spin 8s linear infinite;
+}
+
+.spin.paused {
+  animation-play-state: paused;
 }
 
 $screen-height: calc(100vh - 240px); // SCREEN HEIGHT MINUS HEADER AND FOOTER
