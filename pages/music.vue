@@ -1,59 +1,69 @@
 <template>
-    <div class="grid grid-cols-1 sm:grid-cols-2 mt-5 h-[calc(100vh-240px)]">
-      <div class="flex flex-col mr-5 overflow-y-scroll overscroll-y-auto">
-        <div v-for="track in tracks" class="flex mr-5 items-center justify-between mb-5">
-          <!-- TRACK -->
-          <div class="flex h-full">
-            <div :class="`w-[90px] h-[90px] relative group/track`">
-              <AlbumImage :album-picture="track.albumPicture"/>
-              <div :class="`group-hover/track:flex hidden`">
-                <Icon
-                    @click="onPlayPauseTrack(track)"
-                    :class="`h-[40px] w-[40px] cursor-pointer top-[25px] left-[25px] absolute`"
-                    :name="isPlaying && track.id == playingTrack?.id ? 'material-symbols:pause-rounded' : 'material-symbols:play-arrow-rounded'"
-                />
-              </div>
-            </div>
-
-            <div class="flex-col flex ml-3 h-full justify-between">
-              <div>
-                <h1 :class="[track.id == playingTrack?.id ? 'text-primary dark:text-darkPrimary' : 'text-text-light dark:text-text-dark','small-title']">
-                  {{ track.name }}
-                </h1>
-                <p class="subtitle">{{ track.artistsNamesString }}</p>
-              </div>
-
-              <p class="small-subtitle text-text-light dark:text-text-dark">{{ track.albumName }}</p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 mt-5 h-[calc(100vh-240px)]">
+    <div class="flex flex-col mr-5 overflow-y-scroll overscroll-y-auto">
+      <div v-for="track in tracks" class="flex mr-5 items-center justify-between mb-5">
+        <!-- TRACK -->
+        <div class="flex h-full">
+          <div
+              :draggable="playingTrack?.id != track.id"
+              @dragstart="onDragStart($event, track.id)"
+              :class="`w-[90px] h-[90px] relative group/track`"
+          >
+            <AlbumImage :album-picture="track.albumPicture"/>
+            <div :class="`group-hover/track:flex hidden`">
+              <Icon
+                  @click="onPlayPauseTrack(track)"
+                  :class="`h-[40px] w-[40px] cursor-pointer top-[25px] left-[25px] absolute`"
+                  :name="isPlaying && track.id == playingTrack?.id ? 'material-symbols:pause-rounded' : 'material-symbols:play-arrow-rounded'"
+              />
             </div>
           </div>
 
-          <p class="text-text-light dark:text-text-dark">{{ track.trackDuration }}</p>
-        </div>
-      </div>
+          <div class="flex-col flex ml-3 h-full justify-between">
+            <div>
+              <h1 :class="[track.id == playingTrack?.id ? 'text-primary dark:text-darkPrimary' : 'text-text-light dark:text-text-dark','small-title']">
+                {{ track.name }}
+              </h1>
+              <p class="subtitle">{{ track.artistsNamesString }}</p>
+            </div>
 
-      <div class="hidden sm:flex flex-col items-center justify-center h-full ">
-        <div class="rounded-md square-vinyl p-10 bg-bg-article dark:bg-bg-article-dark shadow relative group">
-          <AlbumImage :class="isPlaying ? 'spin' : 'spin paused'" :album-picture="playingTrack?.albumPicture ?? ''"></AlbumImage>
-          <!-- LITTLE HOLE OF VINYL -->
-          <div class="w-full h-full pointer-events-none top-0 left-0 absolute flex justify-center items-center">
-            <div class="h-[20px] w-[20px] rounded-full bg-bg-article dark:bg-bg-article-dark shadow-inner"></div>
-          </div>
-          <!-- PLAY/ PAUSE BTNS-->
-          <div class="w-full h-full top-0 left-0 absolute justify-center items-center hidden group-hover:flex">
-            <Icon
-                @click="playingTrack != null ? onPlayPauseTrack(playingTrack): null"
-                class="h-[70px] w-[70px] cursor-pointer"
-                :name="isPlaying ? 'material-symbols:pause-rounded' : 'material-symbols:play-arrow-rounded'"
-            />
+            <p class="small-subtitle text-text-light dark:text-text-dark">{{ track.albumName }}</p>
           </div>
         </div>
 
-        <!-- MUSIC VISUALISATION-->
-        <div class="h-[70px] mt-[10px]">
-          <canvas ref="canvas" />
-        </div>
+        <p class="text-text-light dark:text-text-dark">{{ track.trackDuration }}</p>
       </div>
     </div>
+
+    <div class="hidden sm:flex flex-col items-center justify-center h-full ">
+      <div
+          @drop="onDrop($event)"
+          @dragover.prevent
+          @dragenter.prevent
+          class="rounded-md square-vinyl p-10 bg-bg-article dark:bg-bg-article-dark shadow relative group"
+      >
+        <AlbumImage :class="isPlaying ? 'spin' : 'spin paused'"
+                    :album-picture="playingTrack?.albumPicture ?? ''"></AlbumImage>
+        <!-- LITTLE HOLE OF VINYL -->
+        <div class="w-full h-full pointer-events-none top-0 left-0 absolute flex justify-center items-center">
+          <div class="h-[20px] w-[20px] rounded-full bg-bg-article dark:bg-bg-article-dark shadow-inner"></div>
+        </div>
+        <!-- PLAY/ PAUSE BTNS-->
+        <div class="w-full h-full top-0 left-0 absolute justify-center items-center hidden group-hover:flex">
+          <Icon
+              @click="playingTrack != null ? onPlayPauseTrack(playingTrack): null"
+              class="h-[70px] w-[70px] cursor-pointer"
+              :name="isPlaying ? 'material-symbols:pause-rounded' : 'material-symbols:play-arrow-rounded'"
+          />
+        </div>
+      </div>
+
+      <!-- MUSIC VISUALISATION-->
+      <div class="h-[70px] mt-[10px]">
+        <canvas ref="canvas"/>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -75,9 +85,19 @@ watch(playingTrackAudio, (_) => {
   playingTrackAudio.value?.addEventListener('ended', () => isPlaying.value = false)
 }, {immediate: true})
 
+function onDragStart(event: DragEvent, trackId: string) {
+  event.dataTransfer?.setData("id", trackId)
+}
+
+function onDrop(event: DragEvent) {
+  const trackId = event.dataTransfer?.getData('id')
+  const track = tracks.value?.find((track) => track.id === trackId)
+  if (track) onPlayPauseTrack(track)
+}
+
 function onPlayPauseTrack(track: Track) {
   // IF SAME TRACK
-  if(playingTrack.value?.id === track.id) {
+  if (playingTrack.value?.id === track.id) {
     isPlaying.value = !isPlaying.value // TOGGLE PLAYING
   } else {
     isPlaying.value = false // UI STOP PLAYING PREVIOUS AUDIO
