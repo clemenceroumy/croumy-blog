@@ -43,12 +43,13 @@
     </div>
 
     <div class="hidden sm:flex flex-col items-center justify-center h-full ">
+      <!-- TURNTABLE -->
       <div
           @drop="onDrop"
           @dragover.prevent
           @dragenter.prevent="onDragEnter"
           @dragleave="onDragLeave"
-          class="rounded-md square-vinyl p-10 bg-bg-article dark:bg-bg-article-dark shadow relative group"
+          class="rounded-md square-vinyl p-10 bg-bg-article dark:bg-bg-article-dark shadow-[0_10px_40px_-15px_rgba(0,0,0,0.3)] dark:shadow-[0_10px_40px_-15px_rgba(0,0,0,1)] relative group"
       >
         <AlbumImage
             id="playing-image"
@@ -59,7 +60,7 @@
         <div class="w-full h-full pointer-events-none top-0 left-0 absolute flex justify-center items-center">
           <div class="h-[20px] w-[20px] rounded-full bg-bg-article dark:bg-bg-article-dark shadow-inner"></div>
         </div>
-        <!-- PLAY/ PAUSE BTNS-->
+        <!-- PLAY/ PAUSE BTN -->
         <div class="w-full h-full top-0 left-0 absolute justify-center items-center hidden group-hover:flex">
           <Icon
               @click="playingTrack != null ? onPlayPauseTrack(playingTrack): null"
