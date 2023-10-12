@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-full p-[15%] cursor-pointer rounded-full vinyl">
-    <img :src="albumPicture" class="rounded-full w-full h-full object-cover" alt="album picture"/>
+    <img v-if="albumPicture != null && albumPicture != ''" :src="albumPicture" draggable="false" class="rounded-full w-full h-full object-cover" alt=""/>
   </div>
 </template>
 

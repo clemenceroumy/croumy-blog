@@ -4,16 +4,23 @@
       <div v-for="track in tracks" class="flex mr-5 items-center justify-between mb-5">
         <!-- TRACK -->
         <div class="flex h-full">
+          <div :id="`copy-dragged-${track.id}`"
+               class="dragged-item pointer-events-none hidden absolute left-0 top-0 w-[90px] h-[90px] rounded-full z-20">
+            <AlbumImage :album-picture="track.albumPicture"/>
+          </div>
           <div
+              :id="`dragged-item-${track.id}`"
               :draggable="playingTrack?.id != track.id"
-              @dragstart="onDragStart($event, track.id)"
+              @dragstart="onDragStart($event, track)"
+              @dragend="onDragEnd"
+              @drag="onDrag($event)"
               :class="`w-[90px] h-[90px] relative group/track`"
           >
-            <AlbumImage :album-picture="track.albumPicture"/>
+            <AlbumImage class="!cursor-grab" :album-picture="track.albumPicture"/>
             <div :class="`group-hover/track:flex hidden`">
               <Icon
                   @click="onPlayPauseTrack(track)"
-                  :class="`h-[40px] w-[40px] cursor-pointer top-[25px] left-[25px] absolute`"
+                  :class="`h-[30px] w-[30px] cursor-pointer top-[30px] left-[30px] absolute`"
                   :name="isPlaying && track.id == playingTrack?.id ? 'material-symbols:pause-rounded' : 'material-symbols:play-arrow-rounded'"
               />
             </div>
@@ -37,13 +44,17 @@
 
     <div class="hidden sm:flex flex-col items-center justify-center h-full ">
       <div
-          @drop="onDrop($event)"
+          @drop="onDrop"
           @dragover.prevent
-          @dragenter.prevent
+          @dragenter.prevent="onDragEnter"
+          @dragleave="onDragLeave"
           class="rounded-md square-vinyl p-10 bg-bg-article dark:bg-bg-article-dark shadow relative group"
       >
-        <AlbumImage :class="isPlaying ? 'spin' : 'spin paused'"
-                    :album-picture="playingTrack?.albumPicture ?? ''"></AlbumImage>
+        <AlbumImage
+            id="playing-image"
+            :class="[isPlaying ? 'spin' : 'spin paused', 'pointer-events-none']"
+            :album-picture="playingTrack?.albumPicture ?? ''"
+        ></AlbumImage>
         <!-- LITTLE HOLE OF VINYL -->
         <div class="w-full h-full pointer-events-none top-0 left-0 absolute flex justify-center items-center">
           <div class="h-[20px] w-[20px] rounded-full bg-bg-article dark:bg-bg-article-dark shadow-inner"></div>
@@ -71,6 +82,7 @@
 import Track from "~/data/models/Track";
 import AlbumImage from "~/components/music/AlbumImage.vue";
 import {useAVLine} from 'vue-audio-visual'
+import {doc} from "@firebase/firestore";
 
 const config = useRuntimeConfig()
 
@@ -79,20 +91,56 @@ const playingTrack = ref<Track | null>()
 const playingTrackAudio = ref<HTMLAudioElement | null>(null)
 const isPlaying = ref(false)
 
+const draggingTrack = ref<Track | null>(null)
+const isInDropZone = ref(false)
+
 const canvas = ref(null)
 
 watch(playingTrackAudio, (_) => {
   playingTrackAudio.value?.addEventListener('ended', () => isPlaying.value = false)
-}, {immediate: true})
+})
 
-function onDragStart(event: DragEvent, trackId: string) {
-  event.dataTransfer?.setData("id", trackId)
+function onDragStart(event: DragEvent, track: Track) {
+  draggingTrack.value = track
+  // NO DEFAULT DRAG IMG
+  event.dataTransfer?.setDragImage(new Image(), 0, 0);
 }
 
-function onDrop(event: DragEvent) {
-  const trackId = event.dataTransfer?.getData('id')
-  const track = tracks.value?.find((track) => track.id === trackId)
-  if (track) onPlayPauseTrack(track)
+function onDrag(event: DragEvent) {
+  const node = document.getElementById(`copy-dragged-${draggingTrack.value!!.id}`)!!
+  const size = document.getElementById("playing-image")!!.clientWidth
+
+  node.style.display = "block";
+  node.style.boxShadow = "4px 4px 14px 3px rgba(0,0,0,0.6)";
+  node.style.top = `${event.pageY - (isInDropZone.value ? size : 90) / 2}px`;
+  node.style.left = `${event.pageX - (isInDropZone.value ? size : 90) / 2}px`;
+
+}
+
+function onDragEnd() {
+  const node = document.getElementById(`copy-dragged-${draggingTrack.value!!.id}`)!!
+  node.style.display = "none";
+}
+
+function onDragEnter() {
+  isInDropZone.value = true
+  const node = document.getElementById(`copy-dragged-${draggingTrack.value!!.id}`)!!
+  const size = document.getElementById("playing-image")!!.clientWidth
+
+  node.style.width = `${size}px`;
+  node.style.height = `${size}px`;
+}
+
+function onDragLeave() {
+  isInDropZone.value = false
+  const node = document.getElementById(`copy-dragged-${draggingTrack.value!!.id}`)!!
+  node.style.width = "90px";
+  node.style.height = "90px";
+}
+
+function onDrop() {
+  isInDropZone.value = false
+  onPlayPauseTrack(draggingTrack.value!!)
 }
 
 function onPlayPauseTrack(track: Track) {
@@ -159,5 +207,9 @@ $vinyl-space: calc($screen-height - 70px - 10px); // SCREEN HEIGHT MINUS VISUALI
     max-height: $vinyl-space;
     max-width: 100%;
   }
+}
+
+.dragged-item {
+  transition: width 200ms ease-out, height 200ms ease-out;
 }
 </style>
