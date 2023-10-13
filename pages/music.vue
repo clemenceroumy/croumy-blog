@@ -70,6 +70,17 @@
         </div>
       </div>
 
+      <!-- SCROLLING TRACK INFO -->
+      <div class="overflow-hidden relative w-full h-[20px] mt-[20px]">
+        <p
+            v-for="i in [1,2]"
+            :id="`track-info-${i}`"
+            v-if="playingTrack != null"
+            class="text-text-light dark:text-text-dark small-subtitle absolute px-5 right-0 top-0 w-fit overflow-visible whitespace-nowrap"
+        >
+          {{ $t("music.currentTrackInfo", {title: playingTrack.name, artists: playingTrack.artistsNamesString, album: playingTrack.albumName}) }}
+        </p>
+      </div>
       <!-- MUSIC VISUALISATION-->
       <div class="h-[70px] mt-[10px]">
         <canvas ref="canvas"/>
@@ -188,7 +199,7 @@ function onPlayPauseTrack(track: Track) {
 }
 
 $screen-height: calc(100vh - 240px); // SCREEN HEIGHT MINUS HEADER AND FOOTER
-$vinyl-space: calc($screen-height - 70px - 10px); // SCREEN HEIGHT MINUS VISUALIZATION
+$vinyl-space: calc($screen-height - 70px - 10px - 34px); // SCREEN HEIGHT MINUS VISUALIZATION & TEXT SCROLLING
 
 @media (max-width: 1620px) {
   .square-vinyl {
@@ -212,5 +223,20 @@ $vinyl-space: calc($screen-height - 70px - 10px); // SCREEN HEIGHT MINUS VISUALI
 
 .dragged-item {
   transition: width 200ms ease-out, height 200ms ease-out;
+}
+
+@for $i from 1 through 2 {
+  $is-second: $i == 2;
+  #track-info-#{$i} {
+    @keyframes infiniteScroll {
+      0% {transform: translateX(100%) }
+      50% { transform: translateX(0%) }
+      100% { transform: translateX(-100%) }
+    }
+
+    animation: infiniteScroll 24s linear infinite;
+    animation-delay: if($is-second, 12s, 0);
+    animation-fill-mode: both;
+  }
 }
 </style>
