@@ -22,6 +22,6 @@ export default class HLTBGame {
     }
 
     get totalTimeFormatted(): string {
-        return DateFormat.secondsToTime(this.totalTime);
+        return DateFormat.durationToTime(this.totalTime);
     }
 }

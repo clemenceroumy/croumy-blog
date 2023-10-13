@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import * as fr from 'dayjs/locale/fr'
-import duration from 'dayjs/plugin/duration'
+import duration, {DurationUnitType} from 'dayjs/plugin/duration'
 import "./StringFormat";
 import StringFormat from "./StringFormat";
 
@@ -21,12 +21,14 @@ export default class DateFormat {
     return dayjs(date).toDate();
   }
 
-  static secondsToTime(value: number): string {
-    let duration = dayjs.duration(value, 'seconds')
+  static durationToTime(value: number, displaySeconds: boolean = false, unit: DurationUnitType = 'seconds'): string {
+    let duration = dayjs.duration(value, unit)
     const hours = Math.trunc(duration.asHours())
     duration = duration.subtract(hours, 'hours')
-    const minutes = Math.round(duration.asMinutes())
+    const minutes = displaySeconds ? Math.trunc(duration.asMinutes()) : Math.round(duration.asMinutes())
+    duration = duration.subtract(minutes, 'minutes')
+    const seconds = Math.round(duration.asSeconds())
 
-    return `${hours > 0 ? `${hours}h` : ''}${minutes > 0 ? `${minutes}m` : ''}`
+    return `${hours > 0 ? `${hours}h` : ''}${minutes > 0 ? `${minutes}m` : ''}${displaySeconds ? seconds > 0 ? `${seconds}s` : '' : ''}`
   }
 }
