@@ -71,15 +71,17 @@
       </div>
 
       <!-- SCROLLING TRACK INFO -->
-      <div class="overflow-hidden relative w-full h-[20px] mt-[20px]">
-        <p
-            v-for="i in [1,2]"
-            :id="`track-info-${i}`"
-            v-if="playingTrack != null"
-            class="text-text-light dark:text-text-dark small-subtitle absolute px-5 right-0 top-0 w-fit overflow-visible whitespace-nowrap"
-        >
-          {{ $t("music.currentTrackInfo", {title: playingTrack.name, artists: playingTrack.artistsNamesString, album: playingTrack.albumName}) }}
-        </p>
+      <div class="px-10 w-full">
+        <div class="overflow-hidden relative w-full h-[20px] mt-[20px]">
+          <p
+              v-for="i in [1,2]"
+              :id="`track-info-${i}`"
+              v-if="playingTrack != null"
+              class="text-text-light dark:text-text-dark small-subtitle absolute px-5 right-0 top-0 min-w-full w-fit overflow-visible whitespace-nowrap"
+          >
+            {{ $t("music.currentTrackInfo", {title: playingTrack.name, artists: playingTrack.artistsNamesString, album: playingTrack.albumName}) }}
+          </p>
+        </div>
       </div>
       <!-- MUSIC VISUALISATION-->
       <div class="h-[70px] mt-[10px]">
@@ -199,7 +201,7 @@ function onPlayPauseTrack(track: Track) {
 }
 
 $screen-height: calc(100vh - 240px); // SCREEN HEIGHT MINUS HEADER AND FOOTER
-$vinyl-space: calc($screen-height - 70px - 10px - 34px); // SCREEN HEIGHT MINUS VISUALIZATION & TEXT SCROLLING
+$vinyl-space: calc($screen-height - 70px - 10px - 40px); // SCREEN HEIGHT MINUS VISUALIZATION (70 height & 10 padding) & TEXT SCROLLING
 
 @media (max-width: 1620px) {
   .square-vinyl {

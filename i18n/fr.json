@@ -22,7 +22,7 @@
   },
   "music": {
     "description": "Parce que la musique de jeu vidéo, c'est aussi de la musique",
-    "currentTrackInfo": "En cours de lecture: {title}, {artists}, {album}"
+    "currentTrackInfo": "En cours de lecture: {title} {'||'} {artists} {'||'} {album}"
   },
   "games": {
     "searchPlaceholder": "Nom du jeu",
