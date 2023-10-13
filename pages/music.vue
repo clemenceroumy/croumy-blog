@@ -120,6 +120,10 @@ watch(playingTrackAudio, (_) => {
   playingTrackAudio.value?.addEventListener('ended', () => isPlaying.value = false)
 })
 
+onUnmounted(() => {
+  playingTrackAudio.value?.pause()
+})
+
 function onDragStart(event: DragEvent, track: Track) {
   draggingTrack.value = track
   // NO DEFAULT DRAG IMG
