@@ -103,7 +103,10 @@ import {doc} from "@firebase/firestore";
 
 const config = useRuntimeConfig()
 
-const tracks = ref((await useFetch<Track[]>((`${config.public.api.route}/spotify`))).data.value?.map((track) => new Track(track)))
+const tracks = ref((await useFetch<Track[]>((`${config.public.api.route}/spotify`))).data.value
+    ?.map((track) => new Track(track))
+    ?.sort((a, b) => a.albumName.localeCompare(b.albumName) || a.name.localeCompare(b.name))
+)
 const playingTrack = ref<Track | null>()
 const playingTrackAudio = ref<HTMLAudioElement | null>(null)
 const isPlaying = ref(false)
