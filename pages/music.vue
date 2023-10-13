@@ -38,7 +38,10 @@
           </div>
         </div>
 
-        <p class="text-text-light dark:text-text-dark">{{ track.trackDuration }}</p>
+        <div class="flex flex-col items-end">
+          <p class="text-text-light dark:text-text-dark">{{ track.trackDuration }}</p>
+          <a :href="track?.spotifyLink" target="_blank"><svgo-footer-spotify filled alt="spotify icon" class="mt-2"/></a>
+        </div>
       </div>
     </div>
 
@@ -128,7 +131,6 @@ function onDrag(event: DragEvent) {
   node.style.boxShadow = "4px 4px 14px 3px rgba(0,0,0,0.6)";
   node.style.top = `${event.pageY - (isInDropZone.value ? size : 90) / 2}px`;
   node.style.left = `${event.pageX - (isInDropZone.value ? size : 90) / 2}px`;
-
 }
 
 function onDragEnd() {
