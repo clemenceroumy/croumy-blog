@@ -1,9 +1,9 @@
 <template>
-  <div class="grid grid-cols-1 sm:grid-cols-2 mt-5 h-[calc(100vh-240px)]">
-    <div class="flex flex-col mr-5 overflow-y-scroll overscroll-y-auto">
+  <div class="grid grid-cols-1 sm:grid-cols-2 mt-5 h-full sm:h-[calc(100vh-240px)]">
+    <div class="flex flex-col mr-0 sm:mr-5 sm:overflow-y-scroll sm:overscroll-y-auto">
       <div v-for="track in tracks" class="flex mr-5 items-center justify-between mb-5">
         <!-- TRACK -->
-        <div class="flex h-full">
+        <div class="flex">
           <div :id="`copy-dragged-${track.id}`"
                class="dragged-item pointer-events-none hidden absolute left-0 top-0 w-[90px] h-[90px] rounded-full z-20">
             <AlbumImage :album-picture="track.albumPicture"/>
@@ -14,19 +14,19 @@
               @dragstart="onDragStart($event, track)"
               @dragend="onDragEnd"
               @drag="onDrag($event)"
-              :class="`w-[90px] h-[90px] relative group/track`"
+              :class="`h-[70px] sm:h-[90px] aspect-square relative group/track`"
           >
             <AlbumImage class="!cursor-grab" :album-picture="track.albumPicture"/>
-            <div :class="`group-hover/track:flex hidden`">
+            <div :class="`sm:group-hover/track:flex sm:hidden inline`">
               <Icon
                   @click="onPlayPauseTrack(track)"
-                  :class="`h-[30px] w-[30px] cursor-pointer top-[30px] left-[30px] absolute`"
+                  :class="`h-[30px] w-[30px] cursor-pointer top-[20px] left-[20px] sm:top-[30px] sm:left-[30px] absolute`"
                   :name="isPlaying && track.id == playingTrack?.id ? 'material-symbols:pause-rounded' : 'material-symbols:play-arrow-rounded'"
               />
             </div>
           </div>
 
-          <div class="flex-col flex ml-3 h-full justify-between">
+          <div class="flex-col flex ml-3 justify-between">
             <div>
               <h1 :class="[track.id == playingTrack?.id ? 'text-primary dark:text-darkPrimary' : 'text-text-light dark:text-text-dark','small-title']">
                 {{ track.name }}
@@ -38,7 +38,7 @@
           </div>
         </div>
 
-        <div class="flex flex-col items-end">
+        <div class="flex flex-col items-end ml-2">
           <p class="text-text-light dark:text-text-dark">{{ track.trackDuration }}</p>
           <a :href="track?.spotifyLink" target="_blank"><svgo-footer-spotify filled alt="spotify icon" class="mt-2"/></a>
         </div>

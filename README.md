@@ -4,14 +4,16 @@
 
 Sharing things I love on my personal website. Be it video games, manga / anime, music, collection or dev things.
 
+Might use this as a project to experiment all sorts of things.
+
 ## About
 
 This project is develop using the following
 
-| | Technologies                                                                                                                    | Tools                                                                                        |
-|---|---------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
-| FRONTEND | <ul><li>[Nuxt](https://nuxt.com/)</li><li>[VueJS](https://vuejs.org/)</li><li>[TailwindCSS](https://tailwindcss.com/)</li><li>[HeadlessUI](https://headlessui.com)</li></ul> | <ul><li>[Figma](https://www.figma.com/)</li><li>[Hygraph](https://www.hygraph.io/)</li><li>[Github Pages](https://pages.github.com)</li></ul> |
-| [BACKEND](https://github.com/clemenceroumy/croumy-blog-api) | <ul><li>[NestJS](https://docs.nestjs.com)</li><li>[Firebase](firebase.google.com/)</li></ul> | <ul><li>[Render](https://render.com)</li></ul> |
+|                                                             | Technologies                                                                                                                                                                 | Tools                                                                                                                                         |
+|-------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|
+| FRONTEND                                                    | <ul><li>[Nuxt](https://nuxt.com/)</li><li>[VueJS](https://vuejs.org/)</li><li>[TailwindCSS](https://tailwindcss.com/)</li><li>[HeadlessUI](https://headlessui.com)</li></ul> | <ul><li>[Figma](https://www.figma.com/)</li><li>[Hygraph](https://www.hygraph.io/)</li><li>[Github Pages](https://pages.github.com)</li></ul> |
+| [BACKEND](https://github.com/clemenceroumy/croumy-blog-api) | <ul><li>[NestJS](https://docs.nestjs.com)</li><li>[Firebase](firebase.google.com/)</li></ul>                                                                                 | <ul><li>[Render](https://render.com)</li></ul>                                                                                                |
 
 ### Mockups
 
