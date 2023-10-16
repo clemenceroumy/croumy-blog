@@ -1,0 +1,1 @@
+import{_ as o}from"./index.vue.58e92ce4.js";import"./nuxt-link.da68c4f1.js";import"./entry.7d02c6c7.js";import"./getAllGamesArticles.10b1a287.js";import"./marked.esm.17c41145.js";import"./DateFormat.26e47858.js";import"./index.vue.74f59123.js";import"./Icon.9ccd04f4.js";import"./config.6a4e701c.js";import"./fetch.c2962109.js";export{o as default};
