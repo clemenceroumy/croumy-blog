@@ -42,6 +42,13 @@
       "name": "Nom",
       "author": "Auteur",
       "status": "Statut"
+    },
+    "status": {
+      "ONGOING": "En cours",
+      "COMPLETED": "Terminé",
+      "UPTODATE": "À jour",
+      "STOPPED": "Arrêté",
+      "TODO": "À faire"
     }
   }
 }

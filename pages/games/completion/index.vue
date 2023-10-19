@@ -43,7 +43,7 @@
 
 <script lang="ts" setup>
 import HLTBGame from "~/data/models/HLTBGame";
-import CompletedGameInline from "~/components/completion/CompletedGameInline.vue";
+import CompletedGameInline from "~/components/games/CompletedGameInline.vue";
 import "@/helpers/extensions/date.extensions"
 import SelectInput from "~/components/common/SelectInput.vue";
 

@@ -27,6 +27,7 @@
       </div>
     </div>
 
+    <StatusDescription v-if="!limit" class="mb-5"/>
 
     <div class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-3">
       <CompletedManga :manga="manga" v-for="manga in filteredMangas" :key="manga.title"/>
@@ -38,9 +39,10 @@
 import "@/helpers/extensions/date.extensions"
 import SelectInput from "~/components/common/SelectInput.vue";
 import Manga from "~/data/models/Manga";
-import CompletedManga from "~/components/completion/CompletedManga.vue";
+import CompletedManga from "~/components/manga/CompletedManga.vue";
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '@/tailwind.config.js'
+import StatusDescription from "~/components/manga/StatusDescription.vue";
 
 const props = defineProps({
   limit: {type: Boolean, default: false},
@@ -105,7 +107,7 @@ const filteredMangas = computed(() => mangasLimited.value
     .sort((a, b) => {
       switch (selectedSortBy.value) {
         case 0:
-          return sortOrder.value === sort.asc ? a.completedYear.localeCompare(b.completedYear) : b.completedYear.localeCompare(a.completedYear)
+          return sortOrder.value === sort.asc ? b.completedYear.localeCompare(a.completedYear) : a.completedYear.localeCompare(b.completedYear)
         case 1:
           return sortOrder.value === sort.asc ? a.title.localeCompare(b.title) : b.title.localeCompare(a.title)
         case 2:
