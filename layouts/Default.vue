@@ -26,7 +26,7 @@
 
       <div id="menu" class="flex-col lg:flex-row items-end mr-10 lg:mr-0 hidden lg:flex gap-0 lg:gap-4">
         <nuxt-link to="/games"><h1 :class="`${router.currentRoute.value.path === '/games' ? 'text-primary dark:text-darkPrimary' : 'text-text-light dark:text-text-dark' } font-bold title`">{{ $t('pages.games') }}</h1></nuxt-link>
-        <nuxt-link to="/404"><h1 :class="`${router.currentRoute.value.path === '/mangas' ? 'text-primary dark:text-darkPrimary' : 'text-text-light dark:text-text-dark' } font-bold title`">{{ $t('pages.mangas') }}</h1></nuxt-link>
+        <nuxt-link to="/manga-anime"><h1 :class="`${router.currentRoute.value.path === '/manga-anime' ? 'text-primary dark:text-darkPrimary' : 'text-text-light dark:text-text-dark' } font-bold title`">{{ $t('pages.mangas') }}</h1></nuxt-link>
         <nuxt-link to="/music"><h1 :class="`${router.currentRoute.value.path === '/music' ? 'text-primary dark:text-darkPrimary' : 'text-text-light dark:text-text-dark' } font-bold title`">{{ $t('pages.music') }}</h1></nuxt-link>
         <nuxt-link to="/collection"><h1 :class="`${router.currentRoute.value.path === '/collection' ? 'text-primary dark:text-darkPrimary' : 'text-text-light dark:text-text-dark' } font-bold title`">{{ $t('pages.collection') }}</h1></nuxt-link>
         <nuxt-link to="/404"><h1 :class="`${router.currentRoute.value.path === '/about' ? 'text-primary dark:text-darkPrimary' : 'text-text-light dark:text-text-dark' } font-bold title`">{{ $t('pages.about') }}</h1></nuxt-link>

@@ -11,7 +11,7 @@
       <Completion :limit="6" :activate-search="false"/>
     </div>
 
-    <h1 class="title mb-2 text-text-light dark:text-text-dark">Articles</h1>
+    <h1 class="title mb-2 text-text-light dark:text-text-dark">{{ $t('pages.articles') }}</h1>
     <nuxt-link
         :key="article.slug"
         v-for="(article, index) in data?.games"

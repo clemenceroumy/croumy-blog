@@ -19,7 +19,7 @@
           leave-to-class="opacity-0"
       >
         <HeadlessListboxOptions
-            class="absolute mt-1 w-full overflow-auto rounded-md bg-white dark:bg-black py-1"
+            class="absolute mt-1 w-full overflow-auto rounded-md bg-white dark:bg-black py-1 z-10"
         >
           <HeadlessListboxOption
               v-for="(value, key) in items"

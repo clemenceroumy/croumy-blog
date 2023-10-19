@@ -2,7 +2,7 @@
   "appName": "CROUMY",
   "pages": {
     "games": "Jeux",
-    "mangas": "Mangas",
+    "mangas": "Manga & Anime",
     "gamesCompletion": "Complétion",
     "articles": "Articles",
     "music": "Musique JV",
@@ -31,6 +31,17 @@
       "name": "Nom",
       "platform": "Plateforme",
       "playtime": "Temps de jeu"
+    }
+  },
+  "manga": {
+    "manga": "Manga",
+    "anime": "Anime",
+    "searchPlaceholder": "Nom du manga / anime",
+    "sortBy": {
+      "completionYear": "Année de complétion",
+      "name": "Nom",
+      "author": "Auteur",
+      "status": "Statut"
     }
   }
 }
